@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Régua de CRM · Bookster pelo Mundo 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#131b3a;
+    --navy-2:#1c2650;
+    --paper:#f6f1e3;
+    --paper-2:#efe6d0;
+    --ink:#221c14;
+    --ink-soft:#5a5346;
+    --rust:#b8542f;
+    --rust-ink:#5c2311;
+    --teal:#2f6b62;
+    --teal-ink:#123a33;
+    --mustard:#c08a26;
+    --mustard-ink:#5a3f0f;
+    --line:rgba(19,27,58,0.16);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:36px 24px 80px;display:none;}
+
+  .lock-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--paper);
+    padding:24px;
+  }
+  .lock-card{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:20px;
+    padding:40px 36px;
+    max-width:360px;
+    width:100%;
+    text-align:center;
+  }
+  .lock-card .eyebrow{color:#e0a97e;margin-bottom:14px;}
+  .lock-card h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:22px;
+    margin:0 0 8px;
+  }
+  .lock-card p{
+    font-size:13px;
+    color:#c9cde0;
+    margin:0 0 22px;
+    line-height:1.5;
+  }
+  .lock-input{
+    width:100%;
+    height:44px;
+    border-radius:10px;
+    border:1.5px solid rgba(246,241,227,0.25);
+    background:rgba(246,241,227,0.08);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    padding:0 14px;
+    margin-bottom:12px;
+    text-align:center;
+  }
+  .lock-input::placeholder{color:#8a8fae;}
+  .lock-input:focus{outline:none;border-color:#e0a97e;}
+  .lock-btn{
+    width:100%;
+    height:44px;
+    border-radius:10px;
+    border:none;
+    background:var(--rust);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    cursor:pointer;
+  }
+  .lock-btn:hover{background:#a3492a;}
+  .lock-error{
+    font-size:12.5px;
+    color:#f0a898;
+    margin-top:12px;
+    min-height:16px;
+  }
+
+  .hero{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:20px;
+    padding:36px 40px;
+    position:relative;
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;
+    right:-40px;top:-40px;
+    width:200px;height:200px;
+    border:1.5px dashed rgba(246,241,227,0.25);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#e0a97e;
+    margin:0 0 10px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:34px;
+    line-height:1.15;
+    margin:0 0 10px;
+    max-width:640px;
+  }
+  .hero p{
+    font-size:14.5px;
+    color:#c9cde0;
+    max-width:560px;
+    margin:0 0 22px;
+    line-height:1.6;
+  }
+  .stat-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    background:rgba(246,241,227,0.08);
+    border:1px solid rgba(246,241,227,0.18);
+    border-radius:10px;
+    padding:10px 16px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .stat b{display:block;font-size:17px;color:#fff;}
+  .stat span{font-size:10.5px;color:#a8adc7;text-transform:uppercase;letter-spacing:.06em;}
+
+  .fases{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .fase{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .fase .dt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  .fase .nm{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:15px;
+    margin-top:4px;
+  }
+  .fase .obj{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    line-height:1.4;
+  }
+
+  .legend{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .legend b{color:var(--ink);}
+  .legend-item{display:flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .dot.pronto{background:#5e8c46;}
+  .dot.emajuste{background:#c98d1b;}
+  .dot.pararevisao{background:#3a6ea5;}
+  .dot.liberado{background:#7a4fb0;}
+
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 18px;
+    margin-bottom:30px;
+  }
+  .toolbar-text{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    max-width:520px;
+  }
+  .toolbar-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .tbtn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:8px;
+    padding:9px 14px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .tbtn:hover{background:var(--navy-2);}
+  .tbtn.done{background:var(--teal-ink);}
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:22px;
+    border-bottom:1.5px solid var(--line);
+    padding-bottom:0;
+  }
+  .tab{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    font-weight:500;
+    padding:10px 18px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--ink-soft);
+    position:relative;
+    top:1.5px;
+  }
+  .tab .cnt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    margin-left:6px;
+    color:var(--ink-soft);
+  }
+  .tab.active{color:var(--ink);border-bottom:2.5px solid var(--accent);}
+  .tab[data-r="retencao"].active{--accent:var(--rust);}
+  .tab[data-r="aquisicao"].active{--accent:var(--teal);}
+  .tab[data-r="reativacao"].active{--accent:var(--mustard);}
+
+  .board{display:none;}
+  .board.active{display:block;}
+
+  .pass{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    background:#fffdf7;
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .pass .stub{
+    background:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pass .stub span{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--accent-ink);
+    font-weight:600;
+  }
+  .pass[data-r="retencao"]{--accent:#f0c4ab;--accent-ink:var(--rust-ink);}
+  .pass[data-r="aquisicao"]{--accent:#bcdcd4;--accent-ink:var(--teal-ink);}
+  .pass[data-r="reativacao"]{--accent:#ecd6a6;--accent-ink:var(--mustard-ink);}
+
+  .pass-head{
+    padding:16px 18px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    cursor:pointer;
+  }
+  .pass-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    min-width:150px;
+  }
+  .pass-main{flex:1;min-width:220px;}
+  .pass-code{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    letter-spacing:.05em;
+  }
+  .segmento{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .pass-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:16.5px;
+    margin:2px 0 2px;
+  }
+  .pass-tag{font-size:12.5px;color:var(--ink-soft);}
+
+  .status-select{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    padding:5px 22px 5px 10px;
+    border-radius:20px;
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+    background-size:9px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5346'/%3E%3C/svg%3E");
+    white-space:nowrap;
+  }
+  .status-pronto{background-color:#e2ecdb;color:#3c5c2c;}
+  .status-emajuste{background-color:#f6dfae;color:#7a4e0a;}
+  .status-pararevisao{background-color:#cfe0f2;color:#1f4c73;}
+  .status-liberado{background-color:#ddd3f0;color:#4a2f77;}
+
+  .chev{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--ink-soft);
+    font-size:14px;
+    transition:transform .15s ease;
+  }
+  .pass.open .chev{transform:rotate(90deg);}
+
+  .detail{
+    display:none;
+    padding:0 20px 22px;
+    border-top:1.5px dashed var(--line);
+    margin-top:0;
+  }
+  .pass.open .detail{display:block;}
+  .detail-inner{padding-top:18px;}
+  .field{margin-bottom:16px;}
+  .field-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .field-value{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    line-height:1.4;
+  }
+  .field-value.sub{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .corpo p{
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .corpo p:last-child{margin-bottom:0;}
+  .corpo strong{font-weight:600;}
+  .corpo em{font-style:italic;color:var(--ink-soft);}
+  .img-tag{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--paper-2);
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .img-tag:before{content:"▢";font-size:12px;}
+  .cta{
+    display:inline-block;
+    margin-top:6px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--ink);
+    color:var(--paper);
+    padding:8px 16px;
+    border-radius:8px;
+  }
+  .comment-block{
+    margin-top:18px;
+    border-top:1.5px dashed var(--line);
+    padding-top:16px;
+  }
+  .comment-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .comment-field{
+    width:100%;
+    min-height:64px;
+    resize:vertical;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    background:#fffdf7;
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    color:var(--ink);
+    padding:10px 12px;
+    line-height:1.5;
+  }
+  .comment-field:focus{outline:none;border-color:var(--ink-soft);}
+  .comment-field::placeholder{color:#a39c8c;}
+  .copy-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 12px;
+    cursor:pointer;
+    color:var(--ink-soft);
+    margin-top:14px;
+  }
+  .copy-btn:hover{background:var(--paper-2);}
+  .copy-btn.done{color:var(--teal-ink);border-color:var(--teal);}
+
+  @media (max-width:640px){
+    .fases{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="lock-screen" class="lock-screen">
+  <div class="lock-card">
+    <p class="eyebrow">Bookster pelo Mundo 2027 · TAG Livros</p>
+    <h2>Acesso restrito</h2>
+    <p>Essa proposta de régua de CRM é de uso interno. Digite a senha para continuar.</p>
+    <input type="password" id="lock-input" class="lock-input" placeholder="Senha" autocomplete="off">
+    <button type="button" id="lock-btn" class="lock-btn">Entrar</button>
+    <div id="lock-error" class="lock-error"></div>
+  </div>
+</div>
+
+<div class="wrap" id="content">
+
+  <div class="hero">
+    <p class="eyebrow">Proposta de CRM · TAG Livros × Bookster pelo Mundo 2027</p>
+    <h1>Régua de e-mails da pré venda, retenção e reativação</h1>
+    <p>Estrutura de disparos para RD Station cobrindo as três réguas do briefing, com destaques de texto e sinalização de imagens pensados pra um template em PNG, leve e fácil de configurar.</p>
+    <div class="stat-row">
+      <div class="stat"><b>3</b><span>réguas ativas</span></div>
+      <div class="stat"><b>19/08</b><span>início retenção</span></div>
+      <div class="stat"><b>30/08</b><span>abertura pré venda</span></div>
+      <div class="stat"><b>10k</b><span>meta de inscritos</span></div>
+    </div>
+  </div>
+
+  <div class="fases">
+    <div class="fase"><div class="dt">Fase 01 · 19 a 31/08</div><div class="nm">Retenção</div><div class="obj">Conteúdos com foco na base de associados, novidades e argumentos de renovação.</div></div>
+    <div class="fase"><div class="dt">Fase 02 · 24 a 29/08</div><div class="nm">Warm up pré venda</div><div class="obj">Gerar desejo e curiosidade sobre o lançamento da 3ª edição, para base TAG e base Pedro.</div></div>
+    <div class="fase"><div class="dt">Fase 03 · 30/08 a 30/09</div><div class="nm">Lançamento pré venda</div><div class="obj">Comunicar início da pré venda, desejo e senso de urgência. Janela ativa de vendas.</div></div>
+    <div class="fase"><div class="dt">Fase 04 · 01/10 a 30/11</div><div class="nm">Sustentação</div><div class="obj">Manter os argumentos fortes, reativar desejo, prova social e reforço de carrinho abandonado.</div></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot pronto"></span><b>Pronto</b> texto final</div>
+    <div class="legend-item"><span class="dot emajuste"></span><b>Em ajuste</b> entra sozinho quando alguém comenta</div>
+    <div class="legend-item"><span class="dot pararevisao"></span><b>Para revisão</b> conteúdo novo, ainda não revisado</div>
+    <div class="legend-item"><span class="dot liberado"></span><b>Liberado pra RD</b> pronto pra montar no template</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-text">Cada e-mail tem um campo de comentário e um status editável. Ao escrever um comentário, o status muda sozinho para "em ajuste". Exporte tudo pra consolidar os apontamentos.</div>
+    <div class="toolbar-actions">
+      <button class="tbtn" id="export-txt" type="button">Exportar comentários (.txt)</button>
+      <button class="tbtn" id="copy-txt" type="button">Copiar todos os comentários</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-r="retencao">Retenção <span class="cnt">10</span></button>
+    <button class="tab" data-r="aquisicao">Aquisição <span class="cnt">6</span></button>
+    <button class="tab" data-r="reativacao">Reativação <span class="cnt">4</span></button>
+  </div>
+
+  <div id="board-retencao" class="board active"></div>
+  <div id="board-aquisicao" class="board"></div>
+  <div id="board-reativacao" class="board"></div>
+
+</div>
+
+<script>
+const PASSWORD_HASH = "c9938166e7e163907935f40fc3f931c95f7fcd8b9d0c9181ddf348790eda4af9";
+
+async function sha256Hex(text){
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function tryUnlock(){
+  const input = document.getElementById("lock-input");
+  const errorEl = document.getElementById("lock-error");
+  const value = input.value;
+  if(!value){
+    errorEl.textContent = "Digite a senha para continuar.";
+    return;
+  }
+  const hash = await sha256Hex(value);
+  if(hash === PASSWORD_HASH){
+    document.getElementById("lock-screen").style.display = "none";
+    document.getElementById("content").style.display = "block";
+  } else {
+    errorEl.textContent = "Senha incorreta, tente de novo.";
+    input.value = "";
+    input.focus();
+  }
+}
+
+document.getElementById("lock-btn").addEventListener("click", tryUnlock);
+document.getElementById("lock-input").addEventListener("keydown", (e) => {
+  if(e.key === "Enter") tryUnlock();
+});
+
+const DATA = {
+retencao: [
+{
+  code:"RET 01", date:"19/08", status:"pronto", segmento:"toda a base",
+  tag:"Vídeo do Pedro, anúncio 2027 e renovação automática",
+  titulo:"Bookster pelo Mundo 2027 chegou e sua próxima viagem está garantida",
+  subtitulo:"Preço especial de associado, frete grátis e mimos exclusivos pra quem renova com a gente",
+  corpo:[
+    "[IMAGEM: banner do clube, topo do e-mail]",
+    "Olá, viajante,",
+    "*Antes de qualquer coisa, um obrigado sincero por continuar essa viagem com a gente.* O Bookster pelo Mundo é isso, uma jornada que fazemos juntos, um país por mês, um livro de cada vez.",
+    "[IMAGEM: still do Pedro com ícone de play, linkado ao vídeo]",
+    "Assista à mensagem do Pedro contando, em primeira mão, tudo o que vem por aí em 2027.",
+    "Em 2027 vamos visitar **11 países inéditos** (só o Brasil se repete), com **12 livros inéditos** por aqui. A curadoria segue o mesmo critério de sempre: autores consagrados, incluindo um livro nunca publicado no Brasil de um ganhador do Prêmio Nobel, misturados com clássicos dos países que vamos ler.",
+    "Também renovamos o projeto gráfico da coleção. Ouvimos os pedidos e as opiniões de vocês, associados, para deixar a experiência ainda melhor.",
+    "[IMAGEM: mockup das novas capas da coleção, opcional]",
+    "E tem novidade prática também: a nova área do associado já está no ar, com tudo o que você precisa para acompanhar sua assinatura em um só lugar.",
+    "Como você já é parte da nossa comunidade, sua renovação acontece automaticamente, nas mesmas condições da sua compra anterior. Se quiser continuar, não precisa fazer nada. Se decidir não continuar, é só acessar a área do associado para cancelar, sem burocracia.",
+    "Por que renovar com a gente vale a pena? Sua assinatura de 2027 vem com **preço especial de associado (12x de R$ 73,90)**, **frete grátis**, um mimo exclusivo para quem renova (totebag e passaporte literário) e **sorteio de uma viagem para a Coreia do Sul**.",
+    "[IMAGEM: still dos mimos, totebag e passaporte literário]",
+    "*Além dos 12 livros, você continua com acesso ao canal exclusivo, aulas de história e geografia sobre cada país, encontros literários com escritores e uma comunidade que também está viajando junto com você.*"
+  ],
+  ctaText:"Ver todos os detalhes da coleção 2027"
+},
+{
+  code:"RET 02", date:"24/08", status:"pronto", segmento:"toda a base",
+  tag:"Conteúdo de valor, retrospectiva antes do aviso de cobrança",
+  titulo:"Quantos países vocês já leram com a gente",
+  subtitulo:"Um retrospectivo rápido antes da próxima viagem começar",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Antes de embarcarmos para 2027, vale parar um segundo para olhar para trás.",
+    "Nos últimos meses, o clube passou por **[X] países** e **[X] livros**, histórias que dificilmente chegariam até você de outra forma. Autores que viraram descoberta, discussões que renderam boas conversas no Instagram fechado e nas lives.",
+    "[IMAGEM: print ou compilado de comentários reais do Instagram fechado]",
+    "É a comunidade que fala melhor do que a gente: a onlyabookaholic contou que renovou assim que a coleção abriu, e a juhgordon disse que o grupo virou parte essencial da experiência.",
+    "*Essa é a graça do clube, não é só receber os livros em casa.* É fazer parte de uma comunidade que está literalmente lendo o mundo junto.",
+    "Sua renovação para 2027 já está garantida, nas condições especiais de associado. Em breve avisamos a data exata da cobrança."
+  ],
+  ctaText:"Reveja os destaques da coleção"
+},
+{
+  code:"RET 03", date:"27/08", status:"pronto", segmento:"toda a base",
+  tag:"Aviso de renovação, data de cobrança do lote",
+  titulo:"Sua renovação está chegando",
+  subtitulo:"Confirme seus dados e garanta sua vaga na viagem de 2027",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Passando aqui para confirmar: no dia **[DATA DO LOTE]**, vamos processar a renovação automática da sua assinatura Bookster pelo Mundo, nas mesmas condições da sua compra anterior (mesmo método de pagamento e parcelamento).",
+    "O valor total será **R$ 886,80**, parcelado em **12x de R$ 73,90**, com **frete grátis** incluso.",
+    "Se está tudo certo, não precisa fazer nada. Seus livros de 2027 já estão garantidos, junto com o mimo exclusivo de quem renova e o **sorteio da viagem** para a Coreia do Sul.",
+    "*Se por algum motivo você decidiu não continuar, registre seu pedido de cancelamento no formulário abaixo antes da data de cobrança.*"
+  ],
+  ctaText:"Formulário de cancelamento"
+},
+{
+  code:"RET 03R", date:"29 ou 30/08 (2 a 3 dias antes da cobrança do lote)", status:"pronto", segmento:"toda a base",
+  tag:"Repique do aviso de renovação",
+  titulo:"Faltam poucos dias para a cobrança da sua renovação",
+  subtitulo:"Só um lembrete rápido: sua assinatura 2027 já está garantida",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "É só um lembrete rápido: no dia **[DATA DO LOTE]** processamos a renovação automática da sua assinatura, no mesmo valor e parcelamento de sempre.",
+    "*Se não quiser continuar, ainda dá tempo de registrar o cancelamento pelo formulário abaixo.*",
+    "Se está tudo certo, é só aguardar. Os livros de 2027 chegam até você, com todos os mimos de quem renova."
+  ],
+  ctaText:"Formulário de cancelamento"
+},
+{
+  code:"RET 04A", date:"30/08", status:"pronto", segmento:"ainda não renovou",
+  tag:"Lançamento oficial da pré venda para quem ainda não renovou",
+  titulo:"Embarque oficial: a pré venda do Bookster pelo Mundo 2027 começou",
+  subtitulo:"Vídeo do Pedro contando tudo o que muda nessa edição",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: still do Pedro com ícone de play, linkado ao vídeo]",
+    "Chegou o dia. A pré venda do Bookster pelo Mundo 2027 está oficialmente aberta.",
+    "Como associado, você tem prioridade nas condições especiais, mas sua vaga só fica garantida de fato quando a renovação for confirmada.",
+    "**11 países inéditos**, **12 livros inéditos no Brasil**, curadoria com autores consagrados (incluindo um livro nunca publicado no Brasil de ganhador do Nobel), novo projeto gráfico pensado a partir dos seus pedidos, mais o canal exclusivo, aulas de história e geografia, encontros literários e o **sorteio de uma viagem para a Coreia do Sul**.",
+    "[IMAGEM: grid de ícones dos benefícios, livro, avião, frete grátis, canal exclusivo]",
+    "*As vagas da pré venda são limitadas ao estoque, e no ano passado esgotaram antes do previsto.*"
+  ],
+  ctaText:"Confirmar minha renovação"
+},
+{
+  code:"RET 04B", date:"30/08", status:"pronto", segmento:"renovado",
+  tag:"Lançamento oficial da pré venda para quem já renovou",
+  titulo:"Sua viagem em 2027 já está garantida, veja tudo o que preparamos",
+  subtitulo:"Vídeo do Pedro com os detalhes da nova coleção",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Sua renovação já está confirmada. *Muito obrigado por continuar essa viagem com a gente.*",
+    "[IMAGEM: still do Pedro com ícone de play, linkado ao vídeo]",
+    "Já que sua vaga está garantida, aqui vai um gostinho do que vem por aí em 2027.",
+    "**11 países inéditos**, **12 livros inéditos no Brasil**, curadoria com autores consagrados, novo projeto gráfico e o **sorteio de uma viagem para a Coreia do Sul**."
+  ],
+  ctaText:"Ver a coleção completa"
+},
+{
+  code:"RET 05 (trigger)", date:"Automático, no momento da cobrança", status:"pronto", segmento:"bifurca: renovado / ainda não renovou",
+  tag:"Confirmação ou falha de cobrança, e-mail com duas variantes",
+  titulo:"Variante A: sua renovação foi confirmada · Variante B: não conseguimos confirmar seu pagamento",
+  subtitulo:"A: bem vindo de volta a mais uma viagem literária · B: resolva rapidinho para não perder sua vaga em 2027",
+  corpo:[
+    "[IMAGEM: banner do clube, versão simplificada]",
+    "**Variante A, cobrança aprovada:** sua renovação foi processada com sucesso. Os livros de 2027 já estão garantidos para você, junto com o mimo exclusivo de quem renova. Qualquer dúvida sobre entrega, endereço ou forma de pagamento, é só acessar a área do associado.",
+    "**Variante B, cobrança recusada:** tentamos processar sua renovação, mas o pagamento não foi aprovado. Isso pode acontecer por cartão vencido, limite insuficiente ou dados desatualizados. Atualize seus dados de pagamento na área do associado para garantir sua vaga na coleção 2027. Se precisar de ajuda, nosso time de atendimento está disponível durante o mutirão de renovação."
+  ],
+  ctaText:"Atualizar forma de pagamento"
+},
+{
+  code:"RET 06", date:"08/09 (aprox., após lançamento da pré venda)", status:"pronto", segmento:"ainda não renovou",
+  tag:"Bastidores da curadoria",
+  titulo:"Como escolhemos os 12 livros de 2027",
+  subtitulo:"Bastidores da curadoria com o Pedro e o time TAG",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Você já parou para pensar em como a gente escolhe os livros que chegam até você todo mês?",
+    "[IMAGEM: still de bastidores da curadoria, Pedro e time TAG selecionando livros]",
+    "Para montar a coleção 2027, viajamos por 12 países atrás de histórias que fazem você explorar o que existe além da sua estante. Ao longo do ano, você vai ler tanto autores contemporâneos quanto clássicos com história nos seus países de origem.",
+    "O critério é sempre o mesmo: autores reconhecidos das nossas paradas, mês a mês, sem seguir listas de mais vendidos.",
+    "*Esse é o tipo de detalhe que só quem está dentro do clube conhece de perto.*"
+  ],
+  ctaText:"Ver a curadoria completa de 2027"
+},
+{
+  code:"RET 07", date:"18/09 (prova social, uma semana e meia antes do fim)", status:"pronto", segmento:"ainda não renovou",
+  tag:"Prova social e aviso de que a pré venda tem data para acabar",
+  titulo:"O grupo já está fervendo (e a pré venda fecha dia 30/09)",
+  subtitulo:"Depoimentos de quem já está viajando com a gente em 2027",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: print ou compilado de comentários do Instagram fechado]",
+    "O Instagram fechado do clube já está cheio de gente comentando os primeiros destinos de 2027.",
+    "A leda.carolina chamou o Bookster pelo Mundo de melhor clube do livro do mundo, e a saintmarkbr já indicou para vários amigos.",
+    "Se você ainda está decidindo, essa é a hora. As condições especiais de associado valem só durante a pré venda, que fecha no dia **30/09**, e o estoque é limitado."
+  ],
+  ctaText:"Garantir minha renovação"
+},
+{
+  code:"RET 08", date:"29/09 (véspera do encerramento)", status:"pronto", segmento:"ainda não renovou",
+  tag:"Último chamado, encerramento da pré venda",
+  titulo:"Última chance, a pré venda do Bookster pelo Mundo 2027 fecha amanhã",
+  subtitulo:"Depois de amanhã, as condições especiais de associado saem do ar",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "*Só um aviso rápido: amanhã, dia 30/09, é o último dia da pré venda do Bookster pelo Mundo 2027.*",
+    "Se você ainda não confirmou sua renovação, esse é o momento. Depois de amanhã, o **preço especial de associado**, o **frete grátis** e o **sorteio da viagem** para a Coreia do Sul saem do ar.",
+    "Sua vaga na próxima viagem literária está a um clique de distância."
+  ],
+  ctaText:"Renovar agora"
+}
+],
+aquisicao: [
+{
+  code:"AQ 01", date:"20/08", status:"pronto", segmento:"lista de espera",
+  tag:"Teaser para a base em lista de espera",
+  titulo:"A próxima viagem literária está quase pronta",
+  subtitulo:"Fique de olho, a pré venda do Bookster pelo Mundo 2027 abre em breve",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Você entrou na nossa lista de espera porque quer viajar o mundo pelos livros. E a boa notícia é que a próxima edição do Bookster pelo Mundo está quase pronta.",
+    "Em 2027 vamos visitar países que dificilmente chegam até as livrarias brasileiras, com uma curadoria que já rendeu autores premiados e descobertas literárias inéditas por aqui.",
+    "*No dia 30/08 abrimos oficialmente a pré venda. Guarde a data.*"
+  ],
+  ctaText:null
+},
+{
+  code:"AQ 02", date:"30/08", status:"pronto", segmento:"público geral",
+  tag:"Lançamento oficial da pré venda para público geral",
+  titulo:"O clube que te leva para viajar o mundo pelos livros",
+  subtitulo:"Conheça o Bookster pelo Mundo 2027, com a TAG Livros",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Existem países que você conhece. E existem países que você entende. É essa a diferença que o Bookster pelo Mundo propõe fazer na sua estante.",
+    "Todo mês, você recebe em casa um livro de um país diferente, com curadoria de autores consagrados e descobertas inéditas no Brasil. Em 2027, são **11 países inéditos** e **12 livros** que ainda não tinham chegado por aqui.",
+    "[IMAGEM: grid de ícones dos benefícios, livro, avião, frete grátis, canal exclusivo]",
+    "Além dos livros, você tem acesso a um canal exclusivo, aulas de história e geografia sobre cada destino, lives com convidados especiais e ainda concorre ao **sorteio de uma viagem para a Coreia do Sul**.",
+    "*A pré venda é por tempo (e estoque) limitado, com preço especial e frete grátis.*"
+  ],
+  ctaText:"Quero embarcar"
+},
+{
+  code:"AQ 03", date:"10/09 (aprox.)", status:"pararevisao", segmento:"público geral, ainda não decidiu",
+  tag:"Bastidores da curadoria para quem ainda não decidiu",
+  titulo:"Por dentro da curadoria do Bookster pelo Mundo 2027",
+  subtitulo:"Como o Pedro e o time da TAG escolhem os 12 livros da coleção",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: still de bastidores da curadoria]",
+    "Se você ainda está decidindo se entra nessa viagem, vale conhecer o que tem por trás dela.",
+    "Para montar a coleção 2027, o Pedro e o time da TAG viajaram por 12 países atrás de histórias que fazem você explorar o que existe além da sua estante. **Autores consagrados**, descobertas **inéditas no Brasil** e clássicos com história real nos seus países de origem, tudo escolhido a dedo, sem seguir listas de mais vendidos.",
+    "*Não é sorte, é critério. E é esse critério que faz o clube valer o ano inteiro.*"
+  ],
+  ctaText:"Conhecer a coleção 2027"
+},
+{
+  code:"AQ 04", date:"29/09, véspera do encerramento", status:"pararevisao", segmento:"público geral, ainda não decidiu",
+  tag:"Urgência final, pré venda fecha dia 30/09",
+  titulo:"Últimos dias da pré venda do Bookster pelo Mundo 2027",
+  subtitulo:"Amanhã as condições especiais de pré venda saem do ar",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "*Amanhã, dia 30/09, é o último dia da pré venda do Bookster pelo Mundo 2027.*",
+    "Depois de amanhã, o preço especial, o frete grátis e o **sorteio de uma viagem para a Coreia do Sul** saem do ar.",
+    "Se você chegou até aqui lendo sobre o clube, é sinal de que já tem curiosidade suficiente pra topar essa viagem."
+  ],
+  ctaText:"Quero embarcar agora"
+},
+{
+  code:"AQ 05 (trigger)", date:"Automático, ativo de 01/10 a 30/11 (fase de sustentação)", status:"pronto", segmento:"carrinho abandonado",
+  tag:"Recuperação de carrinho abandonado",
+  titulo:"Ainda dá tempo de garantir sua vaga no Bookster pelo Mundo 2027",
+  subtitulo:"Você chegou a começar sua assinatura, falta só finalizar",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Vimos que você chegou a iniciar sua assinatura do Bookster pelo Mundo 2027, mas não finalizou.",
+    "Sua vaga ainda está disponível, com as condições especiais de associado e frete grátis. Assim que finalizar, você já entra no **sorteio da viagem** para a Coreia do Sul.",
+    "*Se travou em alguma dúvida sobre a experiência do clube ou o pagamento, é só responder este e-mail que a gente te ajuda a resolver.*"
+  ],
+  ctaText:"Finalizar minha assinatura"
+},
+{
+  code:"AQ 06", date:"17/09 (aprox., meio da janela de pré venda)", status:"pararevisao", segmento:"público geral, ainda não decidiu",
+  tag:"Carta pessoal do Pedro para quem ainda não conhece o clube",
+  titulo:"Uma carta minha pra quem ainda não embarcou",
+  subtitulo:"Por que eu quis criar esse clube, e por que acho que vale a pena pra você",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: foto pessoal do Pedro, mais próxima, sem ser still de vídeo]",
+    "Oi, aqui é o Pedro.",
+    "*Eu sei que caixa de entrada de gente que você ainda não conhece direito não é o lugar mais gostoso pra receber carta, mas eu queria falar com você antes de qualquer argumento de venda.*",
+    "Ler e viajar sempre foram as minhas duas grandes paixões, muito antes de qualquer clube existir. Foi juntando essas duas coisas que o Bookster pelo Mundo nasceu, a ideia de que um livro bem escolhido consegue te colocar dentro de um país de um jeito que nenhuma viagem de cinco dias consegue.",
+    "Cada mês, você lê um livro de um lugar diferente, escolhido a dedo por mim e pelo time da TAG, com autores que dificilmente chegariam até você de outra forma. **Passamos meses inteiros pensando em cada detalhe da curadoria**, porque eu não quero só te mandar um livro, eu quero te levar a um lugar.",
+    "Se você gosta de descobrir histórias antes de todo mundo, de entender um país além do clichê, esse clube foi feito pra você.",
+    "*Espero te ver dentro dessa viagem em 2027.*",
+    "Um abraço, Pedro"
+  ],
+  ctaText:"Quero conhecer o clube"
+}
+],
+reativacao: [
+{
+  code:"REA 01", date:"30/08", status:"pronto", segmento:"ex-associados",
+  tag:"Anúncio da pré venda com condição especial de retorno",
+  titulo:"Sentimos sua falta nessa viagem",
+  subtitulo:"Volte com as mesmas condições de quem nunca saiu",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Faz um tempo que você não viaja com a gente, e o Bookster pelo Mundo 2027 é uma boa desculpa para voltar.",
+    "Muita coisa mudou desde a sua última assinatura: novo projeto gráfico, curadoria ainda mais equilibrada entre livros leves e desafiadores e **11 países inéditos** no roteiro.",
+    "Para facilitar sua volta, preparamos uma condição especial: o mesmo valor de quem está renovando, **12x de R$ 73,90**.",
+    "*Bora retomar essa viagem de onde parou?*"
+  ],
+  ctaText:"Quero voltar a viajar"
+},
+{
+  code:"REA 02", date:"15/09 (aprox.)", status:"pararevisao", segmento:"ex-associados",
+  tag:"Prova social de quem já voltou a assinar",
+  titulo:"Quem voltou não se arrependeu",
+  subtitulo:"Histórias reais de quem retomou a viagem com o Bookster pelo Mundo",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: print ou compilado de comentários de quem reativou a assinatura]",
+    "A gente sabe que voltar pra alguma coisa que você deixou de lado nem sempre é fácil de decidir. Por isso, achamos que valia mostrar quem já tomou essa decisão.",
+    "Várias pessoas que reativaram a assinatura contam a mesma coisa: *o que fez diferença não foi só o livro, foi voltar a fazer parte do grupo.*",
+    "Se essa também é sua vontade, as condições especiais de quem está renovando ainda valem pra você."
+  ],
+  ctaText:"Quero voltar a viajar"
+},
+{
+  code:"REA 03", date:"29/09, véspera do encerramento", status:"pararevisao", segmento:"ex-associados",
+  tag:"Último chamado, pré venda fecha dia 30/09",
+  titulo:"É a sua última chance de embarcar nessa edição",
+  subtitulo:"Amanhã as condições especiais de quem está voltando saem do ar",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "*Amanhã, dia 30/09, fecha a pré venda do Bookster pelo Mundo 2027, e com ela a condição especial pra quem está voltando.*",
+    "Depois de amanhã, o valor de renovação, o frete grátis e o **sorteio da viagem** para a Coreia do Sul saem do ar.",
+    "Se você já decidiu voltar, esse é o momento de confirmar."
+  ],
+  ctaText:"Quero voltar agora"
+},
+{
+  code:"REA 04", date:"05/09 (aprox., logo após o lançamento da pré venda)", status:"pararevisao", segmento:"ex-associados",
+  tag:"Carta pessoal do Pedro para quem já foi do clube",
+  titulo:"Uma carta minha pra quem já viajou com a gente antes",
+  subtitulo:"Por que eu queria muito te ver de volta nessa edição",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "[IMAGEM: foto pessoal do Pedro, mais próxima]",
+    "Oi, aqui é o Pedro.",
+    "*Eu lembro de quem já leu comigo, mesmo sem saber seu nome de cabeça. Lembro do tipo de gente que topa ler um livro de um país que nunca pisou, só pela curiosidade de entender aquele lugar por dentro.*",
+    "Por isso eu queria falar direto com você. Sei que em algum momento a rotina apertou, ou o momento não foi o certo, e você deu uma pausa nessa viagem com a gente. Tudo bem, isso acontece.",
+    "Mas eu queria te contar que **em 2027 a gente vai pra 11 países que nunca visitamos antes**, com uma curadoria que eu montei com ainda mais cuidado, ouvindo o que vocês pediram nas pesquisas que fizemos ano passado.",
+    "*Se aquilo que te fez entrar no clube uma vez ainda faz sentido pra você, essa é a hora de voltar.*",
+    "Um abraço, Pedro"
+  ],
+  ctaText:"Quero voltar a viajar"
+}
+]
+};
+
+const LABELS = {retencao:"RET", aquisicao:"AQ", reativacao:"REA"};
+const STATUS_LABELS = {
+  pronto:"pronto",
+  emajuste:"em ajuste",
+  pararevisao:"para revisão",
+  liberado:"liberado pra RD"
+};
+
+function parseMd(text){
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>");
+}
+
+function renderCorpo(corpoArr){
+  return corpoArr.map(p => {
+    if(p.indexOf("[IMAGEM") === 0){
+      const label = p.replace(/^\[IMAGEM:?\s*/,"").replace(/\]$/,"");
+      return `<div class="img-tag">${label}</div>`;
+    }
+    return `<p>${parseMd(p)}</p>`;
+  }).join("");
+}
+
+function buildPass(item, regua){
+  const el = document.createElement("div");
+  el.className = "pass";
+  el.setAttribute("data-r", regua);
+
+  const detailInner = `
+    <div class="field">
+      <div class="field-label">Título</div>
+      <div class="field-value">${item.titulo}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Subtítulo</div>
+      <div class="field-value sub">${item.subtitulo}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Corpo</div>
+      <div class="corpo">${renderCorpo(item.corpo)}</div>
+    </div>
+    ${item.ctaText ? `<div class="cta">${item.ctaText}</div>` : ""}
+  `;
+
+  el.innerHTML = `
+    <div class="stub"><span>${LABELS[regua]}</span></div>
+    <div>
+      <div class="pass-head">
+        <div class="pass-date">${item.date}</div>
+        <div class="pass-main">
+          <div class="pass-code">${item.code}</div>
+          <div class="segmento">${item.segmento}</div>
+          <div class="pass-title">${item.titulo}</div>
+          <div class="pass-tag">${item.tag}</div>
+        </div>
+        <select class="status-select" data-status="${item.status}"></select>
+        <div class="chev">›</div>
+      </div>
+      <div class="detail"><div class="detail-inner">
+        ${detailInner}
+        <div class="comment-block">
+          <div class="comment-label">Comentários e sugestões de edição</div>
+          <textarea class="comment-field" data-regua="${regua}" data-code="${item.code}" data-titulo="${item.titulo}" placeholder="Escreva aqui seu comentário ou sugestão para este e-mail"></textarea>
+        </div>
+        <button class="copy-btn" type="button">Copiar título, subtítulo e corpo</button>
+      </div></div>
+    </div>
+  `;
+
+  el.querySelector(".pass-head").addEventListener("click", (e) => {
+    if(e.target.tagName === "SELECT") return;
+    el.classList.toggle("open");
+  });
+
+  const select = el.querySelector(".status-select");
+  Object.keys(STATUS_LABELS).forEach(key => {
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = STATUS_LABELS[key];
+    select.appendChild(opt);
+  });
+  select.value = item.status;
+  const applyStatusStyle = () => {
+    select.className = "status-select status-" + select.value;
+  };
+  applyStatusStyle();
+  select.addEventListener("change", applyStatusStyle);
+  select.addEventListener("click", (e) => e.stopPropagation());
+
+  const commentField = el.querySelector(".comment-field");
+  commentField.addEventListener("input", () => {
+    if(commentField.value.trim().length > 0){
+      select.value = "emajuste";
+      applyStatusStyle();
+    }
+  });
+
+  const copyBtn = el.querySelector(".copy-btn");
+  copyBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const plainCorpo = item.corpo
+      .filter(p => p.indexOf("[IMAGEM") !== 0)
+      .map(p => p.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*(.+?)\*/g, "$1"));
+    const text = `Título: ${item.titulo}\nSubtítulo: ${item.subtitulo}\n\n${plainCorpo.join("\n\n")}${item.ctaText ? "\n\nCTA: " + item.ctaText : ""}`;
+    navigator.clipboard.writeText(text).then(() => {
+      copyBtn.textContent = "Copiado";
+      copyBtn.classList.add("done");
+      setTimeout(() => {
+        copyBtn.textContent = "Copiar título, subtítulo e corpo";
+        copyBtn.classList.remove("done");
+      }, 1800);
+    });
+  });
+
+  return el;
+}
+
+Object.keys(DATA).forEach(regua => {
+  const board = document.getElementById("board-" + regua);
+  DATA[regua].forEach(item => board.appendChild(buildPass(item, regua)));
+});
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".board").forEach(b => b.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("board-" + tab.dataset.r).classList.add("active");
+  });
+});
+
+function collectComments(){
+  const rows = [];
+  document.querySelectorAll(".comment-field").forEach(field => {
+    const value = field.value.trim();
+    if(value){
+      rows.push(`[${field.dataset.regua.toUpperCase()} · ${field.dataset.code}] ${field.dataset.titulo}\n${value}`);
+    }
+  });
+  return rows;
+}
+
+function buildExportText(){
+  const rows = collectComments();
+  if(rows.length === 0) return null;
+  return "Comentários de revisão · Régua de CRM Bookster pelo Mundo 2027\n\n" + rows.join("\n\n---\n\n");
+}
+
+document.getElementById("copy-txt").addEventListener("click", () => {
+  const btn = document.getElementById("copy-txt");
+  const text = buildExportText();
+  if(!text){
+    btn.textContent = "Nenhum comentário ainda";
+    setTimeout(() => { btn.textContent = "Copiar todos os comentários"; }, 1800);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = "Copiado";
+    btn.classList.add("done");
+    setTimeout(() => {
+      btn.textContent = "Copiar todos os comentários";
+      btn.classList.remove("done");
+    }, 1800);
+  });
+});
+
+document.getElementById("export-txt").addEventListener("click", () => {
+  const btn = document.getElementById("export-txt");
+  const text = buildExportText();
+  if(!text){
+    btn.textContent = "Nenhum comentário ainda";
+    setTimeout(() => { btn.textContent = "Exportar comentários (.txt)"; }, 1800);
+    return;
+  }
+  const blob = new Blob([text], {type:"text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "comentarios-regua-bookster-2027.txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
