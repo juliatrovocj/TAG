@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Régua de CRM · Clubes TAG · Outubro 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+  :root{
+    --navy:#131b3a;
+    --navy-2:#1c2650;
+    --paper:#f6f1e3;
+    --paper-2:#efe6d0;
+    --ink:#221c14;
+    --ink-soft:#5a5346;
+    --rust:#b8542f;
+    --rust-ink:#5c2311;
+    --teal:#2f6b62;
+    --teal-ink:#123a33;
+    --mustard:#c08a26;
+    --mustard-ink:#5a3f0f;
+    --sage:#7d9467;
+    --sage-ink:#37431f;
+    --line:rgba(19,27,58,0.16);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:36px 24px 80px;display:none;}
+
+  .lock-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--paper);
+    padding:24px;
+  }
+  .lock-card{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:20px;
+    padding:40px 36px;
+    max-width:360px;
+    width:100%;
+    text-align:center;
+  }
+  .lock-card .eyebrow{color:#e0a97e;margin-bottom:14px;}
+  .lock-card h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:22px;
+    margin:0 0 8px;
+  }
+  .lock-card p{
+    font-size:13px;
+    color:#c9cde0;
+    margin:0 0 22px;
+    line-height:1.5;
+  }
+  .lock-input{
+    width:100%;
+    height:44px;
+    border-radius:10px;
+    border:1.5px solid rgba(246,241,227,0.25);
+    background:rgba(246,241,227,0.08);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    padding:0 14px;
+    margin-bottom:12px;
+    text-align:center;
+  }
+  .lock-input::placeholder{color:#8a8fae;}
+  .lock-input:focus{outline:none;border-color:#e0a97e;}
+  .lock-btn{
+    width:100%;
+    height:44px;
+    border-radius:10px;
+    border:none;
+    background:var(--rust);
+    color:#fff;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    cursor:pointer;
+  }
+  .lock-btn:hover{background:#a3492a;}
+  .lock-error{
+    font-size:12.5px;
+    color:#f0a898;
+    margin-top:12px;
+    min-height:16px;
+  }
+
+  .hero{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:20px;
+    padding:36px 40px;
+    position:relative;
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;
+    right:-40px;top:-40px;
+    width:200px;height:200px;
+    border:1.5px dashed rgba(246,241,227,0.25);
+    border-radius:50%;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#e0a97e;
+    margin:0 0 10px;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:34px;
+    line-height:1.15;
+    margin:0 0 10px;
+    max-width:640px;
+  }
+  .hero p{
+    font-size:14.5px;
+    color:#c9cde0;
+    max-width:560px;
+    margin:0 0 22px;
+    line-height:1.6;
+  }
+  .stat-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    background:rgba(246,241,227,0.08);
+    border:1px solid rgba(246,241,227,0.18);
+    border-radius:10px;
+    padding:10px 16px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .stat b{display:block;font-size:17px;color:#fff;}
+  .stat span{font-size:10.5px;color:#a8adc7;text-transform:uppercase;letter-spacing:.06em;}
+
+  .clubes{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .clube{
+    background:#fffdf7;
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+  }
+  .clube .nm{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin-bottom:8px;}
+  .clube .ln{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-top:6px;}
+  .clube .ln b{color:var(--ink);font-weight:600;}
+  .clube .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);display:block;}
+  .oferta{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.55;
+    margin-bottom:22px;
+  }
+  .oferta b{color:var(--ink);}
+
+  .fases{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .fase{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .fase .dt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+  }
+  .fase .nm{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:15px;
+    margin-top:4px;
+  }
+  .fase .obj{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    line-height:1.4;
+  }
+
+  .legend{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-bottom:22px;
+  }
+  .legend b{color:var(--ink);}
+  .legend-item{display:flex;align-items:center;gap:6px;}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;}
+  .dot.pronto{background:#5e8c46;}
+  .dot.emajuste{background:#c98d1b;}
+  .dot.pararevisao{background:#3a6ea5;}
+  .dot.liberado{background:#7a4fb0;}
+  .dot.enviado{background:#131b3a;}
+
+  .timeline-wrap{margin-bottom:22px;}
+  .timeline-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .timeline{
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding-bottom:10px;
+  }
+  .tchip{
+    flex:0 0 auto;
+    min-width:118px;
+    max-width:150px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    padding:8px 10px;
+    cursor:pointer;
+  }
+  .tchip:hover{background:#e9e0c9;}
+  .tchip[data-r="aquisicao"]{--accent:var(--teal);}
+  .tchip[data-r="reativacao"]{--accent:var(--mustard);}
+  .tchip[data-r="carrinho"]{--accent:var(--rust);}
+  .tchip[data-r="onboarding"]{--accent:var(--sage);}
+  .tchip .tc-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .tchip .tc-code{
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;
+    color:var(--accent);
+    margin-top:2px;
+  }
+  .tchip .tc-title{
+    font-size:11.5px;
+    line-height:1.3;
+    margin-top:3px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+  }
+
+  .toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 18px;
+    margin-bottom:30px;
+  }
+  .toolbar-text{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    max-width:520px;
+  }
+  .toolbar-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .tbtn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:8px;
+    padding:9px 14px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .tbtn:hover{background:var(--navy-2);}
+  .tbtn.done{background:var(--teal-ink);}
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:22px;
+    border-bottom:1.5px solid var(--line);
+    padding-bottom:0;
+    overflow-x:auto;
+  }
+  .tab{
+    font-family:'Fraunces',serif;
+    font-size:15px;
+    font-weight:500;
+    padding:10px 18px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--ink-soft);
+    position:relative;
+    top:1.5px;
+    white-space:nowrap;
+  }
+  .tab .cnt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    margin-left:6px;
+    color:var(--ink-soft);
+  }
+  .tab.active{color:var(--ink);border-bottom:2.5px solid var(--accent);}
+  .tab[data-r="aquisicao"].active{--accent:var(--teal);}
+  .tab[data-r="reativacao"].active{--accent:var(--mustard);}
+  .tab[data-r="carrinho"].active{--accent:var(--rust);}
+  .tab[data-r="onboarding"].active{--accent:var(--sage);}
+
+  .board{display:none;}
+  .board.active{display:block;}
+
+  .pass{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    background:#fffdf7;
+    border:1.5px solid var(--line);
+    border-radius:var(--radius);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .pass .stub{
+    background:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pass .stub span{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--accent-ink);
+    font-weight:600;
+  }
+  .pass[data-r="aquisicao"]{--accent:#bcdcd4;--accent-ink:var(--teal-ink);}
+  .pass[data-r="reativacao"]{--accent:#ecd6a6;--accent-ink:var(--mustard-ink);}
+  .pass[data-r="carrinho"]{--accent:#f0c4ab;--accent-ink:var(--rust-ink);}
+  .pass[data-r="onboarding"]{--accent:#cddabd;--accent-ink:var(--sage-ink);}
+
+  .pass-head{
+    padding:16px 18px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    cursor:pointer;
+  }
+  .pass-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    min-width:150px;
+  }
+  .pass-main{flex:1;min-width:220px;}
+  .pass-code{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    letter-spacing:.05em;
+  }
+  .clube-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    padding:2px 7px;
+    border-radius:20px;
+    margin-left:6px;
+    vertical-align:1px;
+  }
+  .clube-tag.in{background:#dfe4f3;color:#1f2b5c;}
+  .clube-tag.cu{background:#f1dde4;color:#6a2340;}
+  .segmento{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .pass-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:16.5px;
+    margin:2px 0 2px;
+  }
+  .pass-tag{font-size:12.5px;color:var(--ink-soft);}
+
+  .status-select{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    padding:5px 22px 5px 10px;
+    border-radius:20px;
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+    background-size:9px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%235a5346'/%3E%3C/svg%3E");
+    white-space:nowrap;
+  }
+  .status-pronto{background-color:#e2ecdb;color:#3c5c2c;}
+  .status-emajuste{background-color:#f6dfae;color:#7a4e0a;}
+  .status-pararevisao{background-color:#cfe0f2;color:#1f4c73;}
+  .status-liberado{background-color:#ddd3f0;color:#4a2f77;}
+  .status-enviado{background-color:#131b3a;color:#f6f1e3;}
+
+  .chev{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--ink-soft);
+    font-size:14px;
+    transition:transform .15s ease;
+  }
+  .pass.open .chev{transform:rotate(90deg);}
+
+  .detail{
+    display:none;
+    padding:0 20px 22px;
+    border-top:1.5px dashed var(--line);
+    margin-top:0;
+  }
+  .pass.open .detail{display:block;}
+  .detail-inner{padding-top:18px;}
+  .field{margin-bottom:16px;}
+  .field-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .field-value{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    line-height:1.4;
+  }
+  .field-value.sub{font-family:'Inter',sans-serif;font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .corpo p{
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0 0 12px;
+    color:var(--ink);
+  }
+  .corpo p:last-child{margin-bottom:0;}
+  .corpo strong{font-weight:600;}
+  .corpo em{font-style:italic;color:var(--ink-soft);}
+  .img-tag{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--paper-2);
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .img-tag:before{content:"▢";font-size:12px;}
+  .cta{
+    display:inline-block;
+    margin-top:6px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--ink);
+    color:var(--paper);
+    padding:8px 16px;
+    border-radius:8px;
+  }
+  .corpo .cta{margin:0 0 12px;}
+  .comment-block{
+    margin-top:18px;
+    border-top:1.5px dashed var(--line);
+    padding-top:16px;
+  }
+  .comment-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .comment-field{
+    width:100%;
+    min-height:64px;
+    resize:vertical;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    background:#fffdf7;
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    color:var(--ink);
+    padding:10px 12px;
+    line-height:1.5;
+  }
+  .comment-field:focus{outline:none;border-color:var(--ink-soft);}
+  .comment-field::placeholder{color:#a39c8c;}
+  .copy-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 12px;
+    cursor:pointer;
+    color:var(--ink-soft);
+  }
+  .copy-btn:hover{background:var(--paper-2);}
+  .copy-btn.done{color:var(--teal-ink);border-color:var(--teal);}
+
+  .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .order-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 10px;
+    cursor:pointer;
+    color:var(--ink-soft);
+  }
+  .order-btn:hover{background:var(--paper-2);}
+  .order-btn:disabled{opacity:.35;cursor:default;}
+  .order-btn:disabled:hover{background:none;}
+  .delete-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:none;
+    border:1px solid #d8b3a3;
+    border-radius:8px;
+    padding:6px 12px;
+    cursor:pointer;
+    color:var(--rust-ink);
+    margin-left:auto;
+  }
+  .delete-btn:hover{background:#fbe9e2;}
+  .edit-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:6px 12px;
+    cursor:pointer;
+    color:var(--rust-ink);
+  }
+  .edit-btn:hover{background:var(--paper-2);}
+  .sync-note{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .edit-area{display:none;margin-top:14px;border-top:1.5px dashed var(--line);padding-top:14px;}
+  .edit-area.open{display:block;}
+  .edit-field{margin-bottom:12px;}
+  .edit-field label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-soft);
+    margin-bottom:5px;
+  }
+  .edit-input, .edit-textarea{
+    width:100%;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    background:#fffdf7;
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    color:var(--ink);
+    padding:10px 12px;
+    line-height:1.5;
+  }
+  .edit-textarea{min-height:220px;resize:vertical;font-family:'JetBrains Mono',monospace;font-size:12.5px;}
+  .edit-hint{font-size:11.5px;color:var(--ink-soft);margin:-4px 0 12px;line-height:1.5;}
+  .save-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--rust);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:8px 16px;
+    cursor:pointer;
+  }
+  .save-btn:hover{background:#a3492a;}
+  .save-btn.done{background:var(--teal-ink);}
+
+  .thread{margin-top:14px;}
+  .thread-item{
+    background:var(--paper-2);
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:12.5px;
+    color:var(--ink);
+    margin-bottom:6px;
+    line-height:1.5;
+  }
+  .thread-item .ts{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:var(--ink-soft);
+    margin-bottom:2px;
+  }
+  .send-btn{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:8px;
+    padding:7px 14px;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  .send-btn:hover{background:var(--navy-2);}
+
+  @media (max-width:640px){
+    .fases{grid-template-columns:repeat(2,1fr);}
+    .clubes{grid-template-columns:1fr;}
+    .hero{padding:28px 24px;}
+    .hero h1{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div id="lock-screen" class="lock-screen">
+  <div class="lock-card">
+    <p class="eyebrow">Clubes TAG · Outubro 2026</p>
+    <h2>Acesso restrito</h2>
+    <p>Essa proposta de régua de CRM é de uso interno. Digite a senha para continuar.</p>
+    <input type="password" id="lock-input" class="lock-input" placeholder="Senha" autocomplete="off">
+    <button type="button" id="lock-btn" class="lock-btn">Entrar</button>
+    <div id="lock-error" class="lock-error"></div>
+  </div>
+</div>
+
+<div class="wrap" id="content">
+
+  <div class="hero">
+    <p class="eyebrow">Proposta de CRM · TAG Livros × TAG Inéditos e TAG Curadoria</p>
+    <h1>Régua de e-mails da campanha de assinatura dos clubes</h1>
+    <p>Disparos de outubro para RD Station com foco em novos assinantes de Inéditos e Curadoria: leads que nunca assinaram, ex assinantes e carrinho abandonado. Cada e-mail tem destaques de texto e sinalização de imagens pensados pra um template em PNG, leve e fácil de configurar.</p>
+    <div class="stat-row">
+      <div class="stat"><b>2</b><span>clubes</span></div>
+      <div class="stat"><b>6</b><span>datas de régua</span></div>
+      <div class="stat"><b>12%</b><span>meta de share CRM</span></div>
+      <div class="stat"><b>40 a 50</b><span>novatos por semana</span></div>
+    </div>
+  </div>
+
+  <div class="clubes">
+    <div class="clube">
+      <div class="nm">TAG Inéditos</div>
+      <div class="ln"><span class="lbl">Livro do mês</span><b>O Retrato de Casamento</b>, Maggie O’Farrell, a autora de Hamnet</div>
+      <div class="ln"><span class="lbl">Kit extra</span><b>As mulheres-leão de Teerã</b>, Marjan Kamali</div>
+      <div class="ln"><span class="lbl">Argumento</span>Livros que chegam ao Brasil pela TAG; quem assina lê primeiro</div>
+    </div>
+    <div class="clube">
+      <div class="nm">TAG Curadoria</div>
+      <div class="ln"><span class="lbl">Livro do mês</span><b>A profecia de Dali</b>, Balla Fofana, finalista do Prix des 5 continents</div>
+      <div class="ln"><span class="lbl">Kit extra</span><b>A contagem dos sonhos</b>, Chimamanda Ngozi Adichie, o primeiro romance dela em mais de dez anos</div>
+      <div class="ln"><span class="lbl">Argumento</span>Chega ao Brasil pela caixinha, em edição exclusiva</div>
+    </div>
+  </div>
+  <div class="oferta"><b>Oferta em todos os disparos:</b> kit extra na assinatura e frete grátis o ano todo no plano anual. O cupom de CRM fica guardado para a última chamada (26/10) e para o carrinho abandonado. <b>Ponto de partida:</b> na semana de 28/09 o share de CRM foi 5,7%, com cerca de 16 novatos, quase todos por WhatsApp; por isso cada disparo de e-mail ganha um espelho em WhatsApp no mesmo dia.</div>
+
+  <div class="fases">
+    <div class="fase"><div class="dt">Fase 01 · 09/10</div><div class="nm">Escassez dos kits</div><div class="obj">Últimas oportunidades para levar dois kits de uma vez, com prazo no assunto e no P.S.</div></div>
+    <div class="fase"><div class="dt">Fase 02 · 13 a 15/10</div><div class="nm">Kit extra e plano anual</div><div class="obj">O livro do kit extra vira protagonista; depois, a conta do plano anual com frete grátis.</div></div>
+    <div class="fase"><div class="dt">Fase 03 · 20 a 22/10</div><div class="nm">Quem assina lê primeiro</div><div class="obj">Responder “por que não compro na livraria?” e lembrar do kit antes da pausa do segundo turno.</div></div>
+    <div class="fase"><div class="dt">Fase 04 · 26/10</div><div class="nm">Última chamada</div><div class="obj">Retorno com cupom de CRM, kit extra e frete anual, a condição mais completa da campanha.</div></div>
+  </div>
+
+  <div class="timeline-wrap">
+    <div class="timeline-label">Linha do tempo de todos os disparos</div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot pronto"></span><b>Pronto</b> texto final</div>
+    <div class="legend-item"><span class="dot emajuste"></span><b>Em ajuste</b> entra sozinho quando alguém comenta</div>
+    <div class="legend-item"><span class="dot pararevisao"></span><b>Para revisão</b> conteúdo novo, ainda não revisado</div>
+    <div class="legend-item"><span class="dot liberado"></span><b>Liberado pra RD</b> pronto pra montar no template</div>
+    <div class="legend-item"><span class="dot enviado"></span><b>Enviado</b> já foi disparado</div>
+  </div>
+
+  <div class="toolbar">
+    <div class="toolbar-text">Comentários, status e edições de texto são salvos automaticamente e ficam visíveis pra todo mundo que abrir esta página, não precisa exportar nada. Pra editar um e-mail, abra o card e clique em "Editar texto". Pra adicionar um e-mail novo, use o botão abaixo, ele entra na régua que estiver aberta na aba.</div>
+    <div class="toolbar-actions">
+      <button class="tbtn" id="add-email-btn" type="button">+ Novo e-mail nesta régua</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-r="aquisicao">Aquisição <span class="cnt">0</span></button>
+    <button class="tab" data-r="reativacao">Reativação <span class="cnt">0</span></button>
+    <button class="tab" data-r="carrinho">Carrinho abandonado <span class="cnt">0</span></button>
+    <button class="tab" data-r="onboarding">Onboarding <span class="cnt">0</span></button>
+  </div>
+
+  <div id="board-aquisicao" class="board active"></div>
+  <div id="board-reativacao" class="board"></div>
+  <div id="board-carrinho" class="board"></div>
+  <div id="board-onboarding" class="board"></div>
+
+</div>
+
+<script>
+const PASSWORD_HASH = "c9938166e7e163907935f40fc3f931c95f7fcd8b9d0c9181ddf348790eda4af9";
+
+async function sha256Hex(text){
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function tryUnlock(){
+  const input = document.getElementById("lock-input");
+  const errorEl = document.getElementById("lock-error");
+  const value = input.value;
+  if(!value){
+    errorEl.textContent = "Digite a senha para continuar.";
+    return;
+  }
+  const hash = await sha256Hex(value);
+  if(hash === PASSWORD_HASH){
+    document.getElementById("lock-screen").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    initApp();
+  } else {
+    errorEl.textContent = "Senha incorreta, tente de novo.";
+    input.value = "";
+    input.focus();
+  }
+}
+
+document.getElementById("lock-btn").addEventListener("click", tryUnlock);
+document.getElementById("lock-input").addEventListener("keydown", (e) => {
+  if(e.key === "Enter") tryUnlock();
+});
+
+const DATA = {
+aquisicao: [
+{
+  code:"AQ 01 IN", clube:"in", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
+  tag:"Escassez: últimas oportunidades para os dois kits · Assunto B: Dois romances numa assinatura só, até [DATA]",
+  titulo:"Últimos dias: O Retrato de Casamento + um livro de presente",
+  subtitulo:"Da autora de Hamnet, com As mulheres-leão de Teerã no kit extra.",
+  corpo:[
+    "[IMAGEM: banner do clube com os dois kits lado a lado]",
+    "Oi, [nome],",
+    "Até **[DATA]**, quem assina a TAG Inéditos recebe **dois kits de uma vez**. Depois disso, o kit extra sai da oferta.",
+    "[BOTAO: Quero os dois kits]",
+    "**Kit do mês · O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. Itália, século XVI: uma jovem duquesa, um casamento que ela não escolheu e um retrato que mostra o rosto, mas não o que ela pensava. *Nossos associados já colocam entre as melhores leituras do ano.*",
+    "[IMAGEM: capa de O Retrato de Casamento]",
+    "**Kit extra · As mulheres-leão de Teerã**, de Marjan Kamali. Duas amigas, uma promessa feita na infância e uma cidade que muda inteira ao redor delas.",
+    "[IMAGEM: capa de As mulheres-leão de Teerã]",
+    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
+    "São livros que chegam ao Brasil pela TAG. Você não encontra na livraria da esquina.",
+    "*P.S. Daqui a poucos dias, a mesma assinatura volta a vir com um livro só. O segundo é de quem decidir agora.*"
+  ],
+  ctaText:"Garantir até [DATA]"
+},
+{
+  code:"AQ 01 CU", clube:"cu", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
+  tag:"Escassez: últimas oportunidades para os dois kits · Assunto B: Dois romances numa assinatura só, até [DATA]",
+  titulo:"Últimos dias: uma Chimamanda de presente na sua assinatura",
+  subtitulo:"A profecia de Dali no kit do mês e A contagem dos sonhos no kit extra.",
+  corpo:[
+    "[IMAGEM: banner do clube com os dois kits lado a lado]",
+    "Oi, [nome],",
+    "Até **[DATA]**, quem assina a TAG Curadoria recebe **dois kits de uma vez**. Depois disso, o kit extra sai da oferta.",
+    "[BOTAO: Quero os dois kits]",
+    "**Kit extra · A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos. Quatro mulheres, entre a Nigéria e os Estados Unidos, fazendo as contas dos amores e das escolhas que as trouxeram até ali.",
+    "[IMAGEM: capa de A contagem dos sonhos]",
+    "**Kit do mês · A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie. Um menino chega do Mali à periferia de Paris sem falar francês, e a escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês.",
+    "[IMAGEM: capa de A profecia de Dali]",
+    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
+    "*P.S. Daqui a poucos dias, a mesma assinatura volta a vir com um livro só. O segundo é de quem decidir agora.*"
+  ],
+  ctaText:"Garantir até [DATA]"
+},
+{
+  code:"AQ 02 IN", clube:"in", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
+  tag:"Kit extra como protagonista, com pergunta na abertura · Assunto B: As mulheres-leão de Teerã vêm de presente na sua assinatura",
+  titulo:"Quanto uma amizade aguenta quando o país inteiro muda?",
+  subtitulo:"O kit extra que acompanha O Retrato de Casamento, da autora de Hamnet.",
+  corpo:[
+    "[IMAGEM: capa de As mulheres-leão de Teerã em destaque]",
+    "Oi, [nome],",
+    "Teerã, anos 1950. Duas meninas se conhecem na escola e fazem uma promessa de amizade. Nas décadas seguintes, a cidade muda por completo ao redor delas, e a promessa é posta à prova.",
+    "Esse é **As mulheres-leão de Teerã**, de Marjan Kamali. E ele pode chegar na sua casa **sem custo a mais**.",
+    "[BOTAO: Quero meu kit extra]",
+    "**Assinando a TAG Inéditos agora, você recebe:** O Retrato de Casamento, o novo romance de Maggie O’Farrell, a autora de Hamnet; As mulheres-leão de Teerã, no kit extra; e frete grátis o ano todo no plano anual.",
+    "[IMAGEM: os dois livros lado a lado]",
+    "*Dois romances sobre mulheres que encontraram força onde ninguém esperava, e que você lê antes de chegarem às livrarias.*",
+    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
+  ],
+  ctaText:"Assinar com kit extra"
+},
+{
+  code:"AQ 02 CU", clube:"cu", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
+  tag:"Kit extra como protagonista, nome da autora no assunto · Assunto B: O que você faria se o mundo parasse por um tempo?",
+  titulo:"O novo romance da Chimamanda pode ser seu de presente",
+  subtitulo:"A contagem dos sonhos vem no kit extra da TAG Curadoria.",
+  corpo:[
+    "[IMAGEM: capa de A contagem dos sonhos em destaque]",
+    "Oi, [nome],",
+    "Foram mais de dez anos de espera por um novo romance de **Chimamanda Ngozi Adichie**. A contagem dos sonhos acompanha quatro mulheres, entre a Nigéria e os Estados Unidos, num momento em que o mundo para e sobra tempo para encarar os amores e as escolhas de uma vida.",
+    "Assinando a TAG Curadoria agora, ele chega **como kit extra**.",
+    "[BOTAO: Quero meu kit extra]",
+    "**Você recebe:** A contagem dos sonhos, no kit extra; A profecia de Dali, de Balla Fofana, finalista do Prix des 5 continents, que chega ao Brasil pela caixinha da TAG; e frete grátis o ano todo no plano anual.",
+    "[IMAGEM: os dois livros lado a lado]",
+    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
+  ],
+  ctaText:"Assinar com kit extra"
+},
+{
+  code:"AQ 03 IN", clube:"in", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
+  tag:"A conta do plano anual, kit extra + frete do ano · Assunto B: A conta do plano anual da TAG Inéditos",
+  titulo:"Dois livros agora e um ano sem pagar frete",
+  subtitulo:"O Retrato de Casamento + As mulheres-leão de Teerã, e frete grátis em todas as caixinhas.",
+  corpo:[
+    "[IMAGEM: banner com a conta do plano anual em três linhas]",
+    "Oi, [nome],",
+    "Fizemos a conta do plano anual da TAG Inéditos para você:",
+    "**2 livros logo na primeira entrega:** O Retrato de Casamento, de Maggie O’Farrell, e As mulheres-leão de Teerã, de Marjan Kamali.",
+    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
+    "**12 romances** que você lê antes de chegarem às livrarias do Brasil.",
+    "[BOTAO: Assinar o plano anual]",
+    "*Se você já pensava em assinar, este é o momento em que a assinatura vale mais.*",
+    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
+  ],
+  ctaText:"Assinar o plano anual"
+},
+{
+  code:"AQ 03 CU", clube:"cu", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
+  tag:"A conta do plano anual, kit extra + frete do ano · Assunto B: A conta do plano anual da TAG Curadoria",
+  titulo:"Dois livros agora e um ano sem pagar frete",
+  subtitulo:"A profecia de Dali + A contagem dos sonhos, e frete grátis em todas as caixinhas.",
+  corpo:[
+    "[IMAGEM: banner com a conta do plano anual em três linhas]",
+    "Oi, [nome],",
+    "Fizemos a conta do plano anual da TAG Curadoria para você:",
+    "**2 livros logo na primeira entrega:** A profecia de Dali, de Balla Fofana, e A contagem dos sonhos, de Chimamanda Ngozi Adichie.",
+    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
+    "**12 livros indicados por curadores convidados**, em edições exclusivas.",
+    "[BOTAO: Assinar o plano anual]",
+    "*Se você já pensava em assinar, este é o momento em que a assinatura vale mais.*",
+    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
+  ],
+  ctaText:"Assinar o plano anual"
+},
+{
+  code:"AQ 04 IN", clube:"in", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
+  tag:"Responde à objeção “por que não compro na livraria?” · Assunto B: Leia primeiro o livro de que todo mundo vai falar",
+  titulo:"Antes de virar assunto, já estava na caixinha",
+  subtitulo:"O Retrato de Casamento, da autora de Hamnet, com um livro de presente.",
+  corpo:[
+    "[IMAGEM: fileira de capas que passaram pelo Inéditos antes de virar conversa]",
+    "Oi, [nome],",
+    "[TÍTULO 1], [TÍTULO 2] e As mulheres-leão de Teerã passaram pela caixinha da TAG Inéditos antes de virar conversa. **Quem assina leu primeiro.**",
+    "O próximo da lista é **O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. *O retrato mostrava o rosto de Lucrezia. O livro mostra o que ela pensava.*",
+    "[BOTAO: Quero ler primeiro]",
+    "Assinando agora, você recebe O Retrato de Casamento e o **kit extra com As mulheres-leão de Teerã**. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. Quem assina agora recebe também o kit extra, até [DATA].*"
+  ],
+  ctaText:"Assinar a TAG Inéditos"
+},
+{
+  code:"AQ 04 CU", clube:"cu", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
+  tag:"Pergunta sobre o tema e contexto do autor · Assunto B: Este livro chega ao Brasil pela caixinha da TAG",
+  titulo:"O que acontece quando a escola decide que você não vai aprender?",
+  subtitulo:"A profecia de Dali, finalista do Prix des 5 continents, com a Chimamanda de presente.",
+  corpo:[
+    "[IMAGEM: capa de A profecia de Dali em destaque]",
+    "Oi, [nome],",
+    "Um menino chega do Mali à periferia de Paris sem falar francês. A escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês, e o livro chega à final de **um dos principais prêmios da língua**.",
+    "**A profecia de Dali**, de Balla Fofana, chega ao Brasil pela caixinha da TAG Curadoria.",
+    "[BOTAO: Quero ler primeiro]",
+    "Assinando agora, ele vem com o **kit extra de A contagem dos sonhos**, de Chimamanda Ngozi Adichie. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. Quem assina agora recebe também o kit extra, até [DATA].*"
+  ],
+  ctaText:"Assinar a TAG Curadoria"
+},
+{
+  code:"AQ 05 IN", clube:"in", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"leads e ex assinantes · Inéditos",
+  tag:"Lembrete curto antes da pausa de sexta a domingo · Assunto B: O Retrato de Casamento + As mulheres-leão de Teerã: decida antes do fim de semana",
+  titulo:"Seu kit extra ainda está separado",
+  subtitulo:"Dois livros e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "Oi, [nome],",
+    "Seu kit extra ainda está separado. Assinando a TAG Inéditos até **[DATA]**, você recebe:",
+    "**O Retrato de Casamento**, de Maggie O’Farrell",
+    "**As mulheres-leão de Teerã**, de Marjan Kamali, no kit extra",
+    "**Frete grátis o ano todo** no plano anual",
+    "*O e-mail mais curto da régua, feito para quem já abriu os anteriores.*"
+  ],
+  ctaText:"Garantir meus dois livros"
+},
+{
+  code:"AQ 05 CU", clube:"cu", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"leads e ex assinantes · Curadoria",
+  tag:"Lembrete curto antes da pausa de sexta a domingo · Assunto B: A profecia de Dali + A contagem dos sonhos: decida antes do fim de semana",
+  titulo:"Seu kit extra ainda está separado",
+  subtitulo:"Dois livros e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "Oi, [nome],",
+    "Seu kit extra ainda está separado. Assinando a TAG Curadoria até **[DATA]**, você recebe:",
+    "**A profecia de Dali**, de Balla Fofana",
+    "**A contagem dos sonhos**, de Chimamanda Ngozi Adichie, no kit extra",
+    "**Frete grátis o ano todo** no plano anual",
+    "*O e-mail mais curto da régua, feito para quem já abriu os anteriores.*"
+  ],
+  ctaText:"Garantir meus dois livros"
+},
+{
+  code:"AQ 06 IN", clube:"in", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
+  tag:"Retorno do segundo turno, última chamada com cupom de CRM · Assunto B: [nome], a melhor condição do ano na TAG Inéditos termina em [DATA]",
+  titulo:"Última chamada: cupom + dois livros + frete grátis",
+  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "Oi, [nome],",
+    "Esta é a **condição mais completa** que já enviamos para você, e ela termina em **[DATA]**.",
+    "[BOTAO: Usar meu cupom]",
+    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
+    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet",
+    "**Kit extra com As mulheres-leão de Teerã**, de Marjan Kamali",
+    "**Frete grátis o ano todo** no plano anual",
+    "Dois romances que você lê antes de chegarem às livrarias, com a condição mais completa da campanha.",
+    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+  ],
+  ctaText:"Assinar com cupom"
+},
+{
+  code:"AQ 06 CU", clube:"cu", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
+  tag:"Retorno do segundo turno, última chamada com cupom de CRM · Assunto B: [nome], a Chimamanda de presente termina em [DATA]",
+  titulo:"Última chamada: cupom + dois livros + frete grátis",
+  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "Oi, [nome],",
+    "Esta é a **condição mais completa** que já enviamos para você, e ela termina em **[DATA]**.",
+    "[BOTAO: Usar meu cupom]",
+    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
+    "**Kit extra com A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos",
+    "**A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents",
+    "**Frete grátis o ano todo** no plano anual",
+    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+  ],
+  ctaText:"Assinar com cupom"
+}
+],
+reativacao: [
+{
+  code:"REA 01 IN", clube:"in", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"ex assinantes · Inéditos",
+  tag:"Versão de volta do AQ 01, mesma oferta com abertura afetiva · Assunto B: A caixinha sentiu sua falta (e voltou com dois livros)",
+  titulo:"Para voltar, dois livros de uma vez (só até [DATA])",
+  subtitulo:"O Retrato de Casamento, da autora de Hamnet, com As mulheres-leão de Teerã no kit extra.",
+  corpo:[
+    "[IMAGEM: banner do clube com os dois kits lado a lado]",
+    "Oi, [nome],",
+    "*A caixinha sentiu sua falta.* Se voltar para a TAG Inéditos até **[DATA]**, ela chega com **dois livros**.",
+    "[BOTAO: Quero voltar com os dois kits]",
+    "**Kit do mês · O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. Itália, século XVI: uma jovem duquesa, um casamento que ela não escolheu e um retrato que mostra o rosto, mas não o que ela pensava.",
+    "**Kit extra · As mulheres-leão de Teerã**, de Marjan Kamali. Duas amigas, uma promessa feita na infância e uma cidade que muda inteira ao redor delas.",
+    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
+    "*P.S. Depois de [DATA], o kit extra sai da oferta. Se a ideia era voltar, este é o mês.*"
+  ],
+  ctaText:"Voltar para a TAG Inéditos"
+},
+{
+  code:"REA 01 CU", clube:"cu", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"ex assinantes · Curadoria",
+  tag:"Versão de volta do AQ 01, mesma oferta com abertura afetiva · Assunto B: A caixinha sentiu sua falta (e voltou com uma Chimamanda)",
+  titulo:"Para voltar, dois livros de uma vez (só até [DATA])",
+  subtitulo:"A profecia de Dali no kit do mês e A contagem dos sonhos no kit extra.",
+  corpo:[
+    "[IMAGEM: banner do clube com os dois kits lado a lado]",
+    "Oi, [nome],",
+    "*A caixinha sentiu sua falta.* Se voltar para a TAG Curadoria até **[DATA]**, ela chega com **dois livros**.",
+    "[BOTAO: Quero voltar com os dois kits]",
+    "**Kit extra · A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos.",
+    "**Kit do mês · A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie, que chega ao Brasil pela caixinha da TAG.",
+    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
+    "*P.S. Depois de [DATA], o kit extra sai da oferta. Se a ideia era voltar, este é o mês.*"
+  ],
+  ctaText:"Voltar para a TAG Curadoria"
+},
+{
+  code:"REA 02 IN", clube:"in", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"ex assinantes · Inéditos",
+  tag:"Versão de volta do AQ 02, kit extra como motivo pra voltar · Assunto B: Quanto uma amizade aguenta quando o país inteiro muda?",
+  titulo:"Volte para a TAG e leve um livro a mais",
+  subtitulo:"As mulheres-leão de Teerã vêm de presente com O Retrato de Casamento.",
+  corpo:[
+    "[IMAGEM: capa de As mulheres-leão de Teerã em destaque]",
+    "Oi, [nome],",
+    "Você conhece a caixinha do Inéditos. Este mês, ela volta **com um livro a mais** para quem decidir retomar a assinatura.",
+    "Teerã, anos 1950. Duas meninas fazem uma promessa de amizade, e a cidade muda por completo ao redor delas. Esse é **As mulheres-leão de Teerã**, de Marjan Kamali, o kit extra deste mês.",
+    "[BOTAO: Quero voltar com o kit extra]",
+    "Junto com ele, chega **O Retrato de Casamento**, o novo romance de Maggie O’Farrell, a autora de Hamnet. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
+  ],
+  ctaText:"Retomar minha assinatura"
+},
+{
+  code:"REA 02 CU", clube:"cu", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"ex assinantes · Curadoria",
+  tag:"Versão de volta do AQ 02, Chimamanda como motivo pra voltar · Assunto B: O novo romance da Chimamanda pode ser seu de presente",
+  titulo:"Volte para a TAG e leve a Chimamanda junto",
+  subtitulo:"A contagem dos sonhos vem no kit extra da TAG Curadoria.",
+  corpo:[
+    "[IMAGEM: capa de A contagem dos sonhos em destaque]",
+    "Oi, [nome],",
+    "Foram mais de dez anos de espera por um novo romance de **Chimamanda Ngozi Adichie**. Para quem voltar para a TAG Curadoria agora, ele chega **como kit extra**.",
+    "[BOTAO: Quero voltar com a Chimamanda]",
+    "No kit do mês, **A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents, em edição exclusiva da caixinha. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
+  ],
+  ctaText:"Retomar minha assinatura"
+},
+{
+  code:"REA 03 IN", clube:"in", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"ex assinantes · Inéditos",
+  tag:"Versão de volta do AQ 03, a conta do plano anual · Assunto B: A conta da sua volta para a TAG Inéditos",
+  titulo:"Volte com dois livros e um ano de frete grátis",
+  subtitulo:"O Retrato de Casamento + As mulheres-leão de Teerã, e frete grátis em todas as caixinhas.",
+  corpo:[
+    "[IMAGEM: banner com a conta do plano anual em três linhas]",
+    "Oi, [nome],",
+    "Se você pensava em voltar, fizemos a conta do plano anual da TAG Inéditos:",
+    "**2 livros logo na primeira entrega:** O Retrato de Casamento e As mulheres-leão de Teerã.",
+    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
+    "**12 romances** que você lê antes de chegarem às livrarias do Brasil.",
+    "[BOTAO: Voltar no plano anual]",
+    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
+  ],
+  ctaText:"Voltar no plano anual"
+},
+{
+  code:"REA 03 CU", clube:"cu", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"ex assinantes · Curadoria",
+  tag:"Versão de volta do AQ 03, a conta do plano anual · Assunto B: A conta da sua volta para a TAG Curadoria",
+  titulo:"Volte com dois livros e um ano de frete grátis",
+  subtitulo:"A profecia de Dali + A contagem dos sonhos, e frete grátis em todas as caixinhas.",
+  corpo:[
+    "[IMAGEM: banner com a conta do plano anual em três linhas]",
+    "Oi, [nome],",
+    "Se você pensava em voltar, fizemos a conta do plano anual da TAG Curadoria:",
+    "**2 livros logo na primeira entrega:** A profecia de Dali e A contagem dos sonhos.",
+    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
+    "**12 livros indicados por curadores convidados**, em edições exclusivas.",
+    "[BOTAO: Voltar no plano anual]",
+    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
+  ],
+  ctaText:"Voltar no plano anual"
+},
+{
+  code:"REA 04 IN", clube:"in", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"ex assinantes · Inéditos",
+  tag:"Versão de volta do AQ 04, o que a pessoa perdeu desde que saiu · Assunto B: Os próximos livros do ano podem chegar aí antes",
+  titulo:"Desde que você saiu, estes livros passaram pela caixinha",
+  subtitulo:"E o próximo é O Retrato de Casamento, da autora de Hamnet.",
+  corpo:[
+    "[IMAGEM: fileira de capas enviadas desde a saída da pessoa]",
+    "Oi, [nome],",
+    "Desde que você saiu, [TÍTULO 1], [TÍTULO 2] e As mulheres-leão de Teerã passaram pela caixinha da TAG Inéditos, **antes de virar conversa**.",
+    "O próximo é **O Retrato de Casamento**, de Maggie O’Farrell. *O retrato mostrava o rosto de Lucrezia. O livro mostra o que ela pensava.*",
+    "[BOTAO: Quero voltar a ler primeiro]",
+    "Voltando agora, ele chega com o **kit extra de As mulheres-leão de Teerã**. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. Quem volta agora recebe também o kit extra, até [DATA].*"
+  ],
+  ctaText:"Voltar para a TAG Inéditos"
+},
+{
+  code:"REA 04 CU", clube:"cu", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"ex assinantes · Curadoria",
+  tag:"Versão de volta do AQ 04, pergunta sobre o tema · Assunto B: Os próximos livros do ano podem chegar aí antes",
+  titulo:"O que acontece quando a escola decide que você não vai aprender?",
+  subtitulo:"A profecia de Dali chega ao Brasil pela caixinha, com a Chimamanda de presente.",
+  corpo:[
+    "[IMAGEM: capa de A profecia de Dali em destaque]",
+    "Oi, [nome],",
+    "Um menino chega do Mali à periferia de Paris sem falar francês. A escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês.",
+    "**A profecia de Dali** chega ao Brasil pela caixinha da TAG Curadoria, e é um bom motivo para você voltar.",
+    "[BOTAO: Quero voltar a ler primeiro]",
+    "Voltando agora, ele vem com o **kit extra de A contagem dos sonhos**, de Chimamanda Ngozi Adichie. No plano anual, o frete é grátis o ano todo.",
+    "*P.S. Quem volta agora recebe também o kit extra, até [DATA].*"
+  ],
+  ctaText:"Voltar para a TAG Curadoria"
+},
+{
+  code:"REA 05 IN", clube:"in", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"ex assinantes · Inéditos",
+  tag:"Versão de volta do AQ 06, última chamada com cupom de CRM · Assunto B: [nome], sua volta com a melhor condição do ano termina em [DATA]",
+  titulo:"Sua volta com a melhor condição do ano",
+  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "Oi, [nome],",
+    "Esta é a **condição mais completa** que já enviamos para você voltar, e ela termina em **[DATA]**.",
+    "[BOTAO: Usar meu cupom]",
+    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
+    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet",
+    "**Kit extra com As mulheres-leão de Teerã**, de Marjan Kamali",
+    "**Frete grátis o ano todo** no plano anual",
+    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+  ],
+  ctaText:"Voltar com cupom"
+},
+{
+  code:"REA 05 CU", clube:"cu", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"ex assinantes · Curadoria",
+  tag:"Versão de volta do AQ 06, última chamada com cupom de CRM · Assunto B: [nome], a Chimamanda de presente termina em [DATA]",
+  titulo:"Sua volta com a melhor condição do ano",
+  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  corpo:[
+    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "Oi, [nome],",
+    "Esta é a **condição mais completa** que já enviamos para você voltar, e ela termina em **[DATA]**.",
+    "[BOTAO: Usar meu cupom]",
+    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
+    "**Kit extra com A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos",
+    "**A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents",
+    "**Frete grátis o ano todo** no plano anual",
+    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+  ],
+  ctaText:"Voltar com cupom"
+}
+],
+carrinho: [
+{
+  code:"CA 01 IN (trigger)", clube:"in", date:"Automático, seg a qui durante a campanha", sortDate:"2026-10-08", status:"pararevisao", segmento:"carrinho abandonado · Inéditos",
+  tag:"Recuperação de carrinho, texto curto e botão no topo · Assunto B: Faltou um clique para O Retrato de Casamento chegar aí",
+  titulo:"Seu carrinho agora vem com um livro a mais",
+  subtitulo:"Conclua a assinatura e leve também As mulheres-leão de Teerã.",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Oi, [nome],",
+    "Seu carrinho da TAG Inéditos continua aqui. E, se você concluir agora, ele vem com **um livro a mais**.",
+    "[BOTAO: Concluir com kit extra]",
+    "**O que chega na sua casa:** O Retrato de Casamento, de Maggie O’Farrell, a autora de Hamnet; o kit extra com As mulheres-leão de Teerã, de Marjan Kamali; e frete grátis o ano todo, se você escolher o plano anual.",
+    "Os livros do Inéditos chegam ao Brasil pela TAG. *Fora da caixinha, você ainda não encontra.*",
+    "Use o cupom **[CUPOM]** no checkout.",
+    "*P.S. O kit extra vale só até [DATA]. Depois, a assinatura volta a ter um livro só.*"
+  ],
+  ctaText:"Garantir meus dois livros"
+},
+{
+  code:"CA 01 CU (trigger)", clube:"cu", date:"Automático, seg a qui durante a campanha", sortDate:"2026-10-08", status:"pararevisao", segmento:"carrinho abandonado · Curadoria",
+  tag:"Recuperação de carrinho, texto curto e botão no topo · Assunto B: Faltou um clique para A profecia de Dali chegar aí",
+  titulo:"Seu carrinho agora vem com uma Chimamanda de presente",
+  subtitulo:"Conclua a assinatura e leve também A contagem dos sonhos.",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Oi, [nome],",
+    "Seu carrinho da TAG Curadoria continua aqui. E, se você concluir agora, ele vem com **um livro a mais**.",
+    "[BOTAO: Concluir com kit extra]",
+    "**O que chega na sua casa:** A profecia de Dali, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie; o kit extra com A contagem dos sonhos, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos; e frete grátis o ano todo, se você escolher o plano anual.",
+    "A profecia de Dali chega ao Brasil pela caixinha da TAG, *em edição exclusiva*.",
+    "Use o cupom **[CUPOM]** no checkout.",
+    "*P.S. O kit extra vale só até [DATA]. Depois, a assinatura volta a ter um livro só.*"
+  ],
+  ctaText:"Garantir meus dois livros"
+}
+],
+onboarding: [
+{
+  code:"ONB 01 IN (trigger)", clube:"in", date:"Automático, logo após a assinatura", sortDate:"2026-10-30", status:"pararevisao", segmento:"novos assinantes · Inéditos",
+  tag:"Boas vindas, confirma os dois kits e o que vem a seguir · Assunto B: Seus dois livros já estão a caminho",
+  titulo:"Bem vindo à TAG Inéditos",
+  subtitulo:"O Retrato de Casamento e As mulheres-leão de Teerã já estão separados pra você.",
+  corpo:[
+    "[IMAGEM: banner de boas vindas do clube]",
+    "Oi, [nome],",
+    "Que bom ter você com a gente. A partir de agora, **todo mês chega na sua casa um romance que ainda não está nas livrarias do Brasil**.",
+    "**Sua primeira entrega vem dupla:** O Retrato de Casamento, de Maggie O’Farrell, e o kit extra com As mulheres-leão de Teerã, de Marjan Kamali. [PRAZO DE ENVIO]",
+    "[IMAGEM: foto da caixinha aberta com os dois livros]",
+    "Enquanto a caixinha não chega, baixe o **app da TAG**: lá você acompanha o envio, troca impressões com outros associados e encontra o conteúdo de cada livro.",
+    "*Se assinou no plano anual, o frete das próximas caixinhas já está por nossa conta.*"
+  ],
+  ctaText:"Baixar o app da TAG"
+},
+{
+  code:"ONB 01 CU (trigger)", clube:"cu", date:"Automático, logo após a assinatura", sortDate:"2026-10-30", status:"pararevisao", segmento:"novos assinantes · Curadoria",
+  tag:"Boas vindas, confirma os dois kits e o que vem a seguir · Assunto B: Seus dois livros já estão a caminho",
+  titulo:"Bem vindo à TAG Curadoria",
+  subtitulo:"A profecia de Dali e A contagem dos sonhos já estão separados pra você.",
+  corpo:[
+    "[IMAGEM: banner de boas vindas do clube]",
+    "Oi, [nome],",
+    "Que bom ter você com a gente. A partir de agora, **todo mês chega na sua casa um livro indicado por um curador convidado**, em edição exclusiva.",
+    "**Sua primeira entrega vem dupla:** A profecia de Dali, de Balla Fofana, e o kit extra com A contagem dos sonhos, de Chimamanda Ngozi Adichie. [PRAZO DE ENVIO]",
+    "[IMAGEM: foto da caixinha aberta com os dois livros]",
+    "Enquanto a caixinha não chega, baixe o **app da TAG**: lá você acompanha o envio, troca impressões com outros associados e encontra o conteúdo de cada livro.",
+    "*Se assinou no plano anual, o frete das próximas caixinhas já está por nossa conta.*"
+  ],
+  ctaText:"Baixar o app da TAG"
+},
+{
+  code:"ONB 02 (trigger)", clube:"", date:"Automático, 7 dias após a assinatura", sortDate:"2026-11-06", status:"pararevisao", segmento:"novos assinantes · os dois clubes",
+  tag:"Como funciona a assinatura, reduz dúvidas e cancelamento precoce · Assunto B: Tudo o que você precisa saber sobre a sua caixinha",
+  titulo:"Como funciona a sua assinatura da TAG",
+  subtitulo:"Envio, área do associado e o que fazer se precisar de ajuda.",
+  corpo:[
+    "[IMAGEM: banner do clube]",
+    "Oi, [nome],",
+    "Pra sua primeira semana de TAG [Inéditos/Curadoria] ser tranquila, juntamos aqui o que mais perguntam pra gente:",
+    "**Quando chega:** as caixinhas saem [DIA DE ENVIO] de cada mês, e você recebe o código de rastreio por e-mail.",
+    "**Onde acompanho:** na área do associado e no app, com status da assinatura, dados de entrega e de pagamento.",
+    "**O que vem na caixinha:** o livro do mês, a revista e os mimos do mês. [CONFIRMAR ITENS]",
+    "[IMAGEM: print da área do associado]",
+    "*Se tiver qualquer dúvida, é só responder este e-mail que a gente te ajuda.*"
+  ],
+  ctaText:"Acessar a área do associado"
+}
+]
+};
+
+const LABELS = {aquisicao:"AQ", reativacao:"REA", carrinho:"CA", onboarding:"ONB"};
+const STATUS_LABELS = {
+  pronto:"pronto",
+  emajuste:"em ajuste",
+  pararevisao:"para revisão",
+  liberado:"liberado pra RD",
+  enviado:"enviado"
+};
+
+const SUPABASE_URL = "https://ffhoyonsjzvsvvubzfla.supabase.co";
+const SUPABASE_KEY = "sb_publishable_x08Wk2Tdz3X3GkMWenwuWQ_GmfG61aE";
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const T_EMAILS = "clubes_emails";
+const T_STATUS = "clubes_status";
+const T_COMENTARIOS = "clubes_comentarios";
+
+function clubeDe(code){
+  if(/\bIN\b/.test(code)) return "in";
+  if(/\bCU\b/.test(code)) return "cu";
+  return "";
+}
+const CLUBE_NOME = {in:"Inéditos", cu:"Curadoria"};
+
+function parseMd(text){
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>");
+}
+
+function renderCorpo(corpoArr){
+  return corpoArr.map(p => {
+    if(p.indexOf("[IMAGEM") === 0){
+      const label = p.replace(/^\[IMAGEM:?\s*/,"").replace(/\]$/,"");
+      return `<div class="img-tag">${label}</div>`;
+    }
+    if(p.indexOf("[BOTAO") === 0){
+      const label = p.replace(/^\[BOTAO:?\s*/,"").replace(/\]$/,"");
+      return `<div class="cta" style="opacity:.75">${label}</div>`;
+    }
+    return `<p>${parseMd(p)}</p>`;
+  }).join("");
+}
+
+function fmtTs(iso){
+  try{
+    const d = new Date(iso);
+    return d.toLocaleString("pt-BR", {day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit"});
+  }catch(e){ return ""; }
+}
+
+function corpoToTextarea(corpoArr){
+  return corpoArr.join("\n\n");
+}
+function textareaToCorpo(text){
+  return text.split(/\n\s*\n/).map(s => s.trim()).filter(s => s.length > 0);
+}
+
+async function fetchOverrides(){
+  const overrides = {};
+  const { data, error } = await sb.from(T_EMAILS).select("*");
+  if(!error && data){
+    data.forEach(row => { overrides[row.code] = row; });
+  }
+  return overrides;
+}
+
+async function fetchStatuses(){
+  const map = {};
+  const { data, error } = await sb.from(T_STATUS).select("*");
+  if(!error && data){
+    data.forEach(row => { map[row.code] = row.status; });
+  }
+  return map;
+}
+
+async function fetchComments(){
+  const map = {};
+  const { data, error } = await sb.from(T_COMENTARIOS).select("*").order("criado_em", {ascending:true});
+  if(!error && data){
+    data.forEach(row => {
+      if(!map[row.code]) map[row.code] = [];
+      map[row.code].push(row);
+    });
+  }
+  return map;
+}
+
+function buildPass(item, regua, commentsForCode){
+  const el = document.createElement("div");
+  el.className = "pass";
+  el.setAttribute("data-r", regua);
+  el.setAttribute("data-code", item.code);
+  const cl = clubeDe(item.code);
+  const clubeTag = cl ? `<span class="clube-tag ${cl}">${CLUBE_NOME[cl]}</span>` : "";
+
+  const thread = (commentsForCode || []).map(c => `
+    <div class="thread-item"><span class="ts">${fmtTs(c.criado_em)}</span>${c.comentario.replace(/</g,"&lt;")}</div>
+  `).join("");
+
+  const detailInner = `
+    <div class="field">
+      <div class="field-label">Título (assunto A)</div>
+      <div class="field-value" data-role="view-titulo">${item.titulo}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Subtítulo (preheader)</div>
+      <div class="field-value sub" data-role="view-subtitulo">${item.subtitulo}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Corpo</div>
+      <div class="corpo" data-role="view-corpo">${renderCorpo(item.corpo)}</div>
+    </div>
+    ${item.ctaText ? `<div class="cta" data-role="view-cta">${item.ctaText}</div>` : `<div data-role="view-cta" style="display:none"></div>`}
+    <div class="sync-note" data-role="sync-note">${item.synced ? "Conteúdo carregado do banco" : "Conteúdo padrão, ainda não editado no banco"}</div>
+
+    <div class="card-actions">
+      <button class="order-btn" type="button" data-action="move-up" title="Mover pra cima">▲</button>
+      <button class="order-btn" type="button" data-action="move-down" title="Mover pra baixo">▼</button>
+      <button class="edit-btn" type="button" data-action="toggle-edit">Editar texto</button>
+      <button class="copy-btn" type="button" data-action="copy">Copiar título, subtítulo e corpo</button>
+      <button class="delete-btn" type="button" data-action="delete">Excluir e-mail</button>
+    </div>
+
+    <div class="edit-area" data-role="edit-area">
+      <div class="edit-field">
+        <label>Data de disparo (texto mostrado no card)</label>
+        <input class="edit-input" data-role="edit-date" value="${item.date.replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>Data pra ordenar na timeline (AAAA-MM-DD)</label>
+        <div class="edit-hint">Define a posição do card na linha do tempo do topo. Use uma data aproximada mesmo pra disparos automáticos.</div>
+        <input class="edit-input" data-role="edit-sortdate" value="${(item.sortDate || "").replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>Título (assunto A)</label>
+        <input class="edit-input" data-role="edit-titulo" value="${item.titulo.replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>Subtítulo (preheader)</label>
+        <input class="edit-input" data-role="edit-subtitulo" value="${item.subtitulo.replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>Corpo (um parágrafo por bloco, separado por linha em branco)</label>
+        <div class="edit-hint">Use **texto** pra negrito, *texto* pra itálico, uma linha assim [IMAGEM: descrição] onde entra uma imagem e [BOTAO: texto] pra um botão no meio do e-mail.</div>
+        <textarea class="edit-textarea" data-role="edit-corpo">${corpoToTextarea(item.corpo)}</textarea>
+      </div>
+      <div class="edit-field">
+        <label>CTA final (deixe em branco se não tiver botão)</label>
+        <input class="edit-input" data-role="edit-cta" value="${(item.ctaText || "").replace(/"/g,"&quot;")}">
+      </div>
+      <button class="save-btn" type="button" data-action="save">Salvar no banco</button>
+    </div>
+
+    <div class="comment-block">
+      <div class="comment-label">Comentários e sugestões de edição</div>
+      <div class="thread" data-role="thread">${thread}</div>
+      <textarea class="comment-field" data-role="comment-field" placeholder="Escreva aqui seu comentário ou sugestão para este e-mail"></textarea>
+      <button class="send-btn" type="button" data-action="send-comment">Enviar comentário</button>
+    </div>
+  `;
+
+  el.innerHTML = `
+    <div class="stub"><span>${LABELS[regua]}</span></div>
+    <div>
+      <div class="pass-head">
+        <div class="pass-date" data-role="view-date">${item.date}</div>
+        <div class="pass-main">
+          <div class="pass-code">${item.code}${clubeTag}</div>
+          <div class="segmento">${item.segmento}</div>
+          <div class="pass-title" data-role="head-titulo">${item.titulo}</div>
+          <div class="pass-tag">${item.tag}</div>
+        </div>
+        <select class="status-select" data-status="${item.status}"></select>
+        <div class="chev">›</div>
+      </div>
+      <div class="detail"><div class="detail-inner">${detailInner}</div></div>
+    </div>
+  `;
+
+  el.querySelector(".pass-head").addEventListener("click", (e) => {
+    if(e.target.tagName === "SELECT") return;
+    el.classList.toggle("open");
+  });
+
+  const select = el.querySelector(".status-select");
+  Object.keys(STATUS_LABELS).forEach(key => {
+    const opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = STATUS_LABELS[key];
+    select.appendChild(opt);
+  });
+  select.value = item.status;
+  const applyStatusStyle = () => {
+    select.className = "status-select status-" + select.value;
+  };
+  applyStatusStyle();
+
+  async function saveStatus(newStatus){
+    select.value = newStatus;
+    item.status = newStatus;
+    applyStatusStyle();
+    await sb.from(T_STATUS).upsert({code:item.code, status:newStatus, atualizado_em: new Date().toISOString()});
+  }
+
+  select.addEventListener("change", () => saveStatus(select.value));
+  select.addEventListener("click", (e) => e.stopPropagation());
+
+  const moveUpBtn = el.querySelector('[data-action="move-up"]');
+  const moveDownBtn = el.querySelector('[data-action="move-down"]');
+  const list = DATA[regua];
+  const myIndex = list.indexOf(item);
+  moveUpBtn.disabled = myIndex <= 0;
+  moveDownBtn.disabled = myIndex >= list.length - 1;
+
+  async function ensureRow(it){
+    if(it.synced) return;
+    await sb.from(T_EMAILS).upsert({
+      code:it.code, regua, segmento:it.segmento, data_disparo:it.date, sort_date:it.sortDate || null,
+      tag:it.tag, titulo:it.titulo, subtitulo:it.subtitulo, corpo:it.corpo, cta:it.ctaText || null,
+      posicao:it.posicao, atualizado_em:new Date().toISOString()
+    });
+    it.synced = true;
+  }
+
+  async function swapWith(otherIndex){
+    const other = list[otherIndex];
+    const tmp = item.posicao;
+    item.posicao = other.posicao;
+    other.posicao = tmp;
+    await Promise.all([ensureRow(item), ensureRow(other)]);
+    await Promise.all([
+      sb.from(T_EMAILS).update({posicao:item.posicao}).eq("code", item.code),
+      sb.from(T_EMAILS).update({posicao:other.posicao}).eq("code", other.code)
+    ]);
+    list.sort((a,b) => a.posicao - b.posicao);
+    renderBoard(regua);
+  }
+
+  moveUpBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if(myIndex > 0) swapWith(myIndex - 1);
+  });
+  moveDownBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if(myIndex < list.length - 1) swapWith(myIndex + 1);
+  });
+
+  const deleteBtn = el.querySelector('[data-action="delete"]');
+  deleteBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const ok = confirm(`Excluir o e-mail "${item.titulo}" (${item.code}) da régua? Essa ação apaga o e-mail, o status e os comentários dele do banco, e não pode ser desfeita.`);
+    if(!ok) return;
+    deleteBtn.textContent = "Excluindo...";
+    await Promise.all([
+      sb.from(T_EMAILS).upsert({code:item.code, regua, excluido:true, atualizado_em:new Date().toISOString()}),
+      sb.from(T_STATUS).delete().eq("code", item.code),
+      sb.from(T_COMENTARIOS).delete().eq("code", item.code)
+    ]);
+    const idx = DATA[regua].indexOf(item);
+    if(idx > -1) DATA[regua].splice(idx, 1);
+    delete GLOBAL_COMMENTS[item.code];
+    renderBoard(regua);
+    buildTimeline();
+  });
+
+  const editBtn = el.querySelector('[data-action="toggle-edit"]');
+  const editArea = el.querySelector('[data-role="edit-area"]');
+  editBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    editArea.classList.toggle("open");
+  });
+
+  const saveBtn = el.querySelector('[data-action="save"]');
+  saveBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const novaData = el.querySelector('[data-role="edit-date"]').value.trim();
+    const novoSortDate = el.querySelector('[data-role="edit-sortdate"]').value.trim();
+    const novoTitulo = el.querySelector('[data-role="edit-titulo"]').value.trim();
+    const novoSubtitulo = el.querySelector('[data-role="edit-subtitulo"]').value.trim();
+    const novoCorpo = textareaToCorpo(el.querySelector('[data-role="edit-corpo"]').value);
+    const novoCta = el.querySelector('[data-role="edit-cta"]').value.trim();
+
+    saveBtn.textContent = "Salvando...";
+    const { error } = await sb.from(T_EMAILS).upsert({
+      code:item.code, regua, segmento:item.segmento, data_disparo:novaData || item.date,
+      sort_date: novoSortDate || item.sortDate || null,
+      tag:item.tag, titulo:novoTitulo, subtitulo:novoSubtitulo, corpo:novoCorpo,
+      cta: novoCta || null, posicao:item.posicao, atualizado_em: new Date().toISOString()
+    });
+
+    if(!error){
+      item.date = novaData || item.date;
+      item.sortDate = novoSortDate || item.sortDate;
+      item.titulo = novoTitulo;
+      item.subtitulo = novoSubtitulo;
+      item.corpo = novoCorpo;
+      item.ctaText = novoCta || null;
+      item.synced = true;
+      el.querySelector('[data-role="view-date"]').textContent = item.date;
+      el.querySelector('[data-role="view-titulo"]').textContent = novoTitulo;
+      el.querySelector('[data-role="view-subtitulo"]').textContent = novoSubtitulo;
+      el.querySelector('[data-role="view-corpo"]').innerHTML = renderCorpo(novoCorpo);
+      el.querySelector('[data-role="head-titulo"]').textContent = novoTitulo;
+      const ctaEl = el.querySelector('[data-role="view-cta"]');
+      if(novoCta){ ctaEl.style.display = ""; ctaEl.textContent = novoCta; }
+      else { ctaEl.style.display = "none"; }
+      el.querySelector('[data-role="sync-note"]').textContent = "Conteúdo carregado do banco";
+      saveBtn.textContent = "Salvo";
+      saveBtn.classList.add("done");
+      buildTimeline();
+      setTimeout(() => { saveBtn.textContent = "Salvar no banco"; saveBtn.classList.remove("done"); editArea.classList.remove("open"); }, 1200);
+    } else {
+      saveBtn.textContent = "Erro ao salvar, tente de novo";
+    }
+  });
+
+  const sendBtn = el.querySelector('[data-action="send-comment"]');
+  const commentField = el.querySelector('[data-role="comment-field"]');
+  const threadEl = el.querySelector('[data-role="thread"]');
+  sendBtn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const value = commentField.value.trim();
+    if(!value) return;
+    sendBtn.textContent = "Enviando...";
+    const { error } = await sb.from(T_COMENTARIOS).insert({
+      code:item.code, regua, titulo:item.titulo, comentario:value
+    });
+    if(!error){
+      const now = new Date().toISOString();
+      threadEl.insertAdjacentHTML("beforeend", `<div class="thread-item"><span class="ts">${fmtTs(now)}</span>${value.replace(/</g,"&lt;")}</div>`);
+      commentField.value = "";
+      sendBtn.textContent = "Enviar comentário";
+      if(select.value !== "emajuste") saveStatus("emajuste");
+    } else {
+      sendBtn.textContent = "Erro ao enviar, tente de novo";
+    }
+  });
+
+  const copyBtn = el.querySelector('[data-action="copy"]');
+  copyBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const plainCorpo = item.corpo
+      .filter(p => p.indexOf("[IMAGEM") !== 0)
+      .map(p => p.indexOf("[BOTAO") === 0 ? "BOTÃO: " + p.replace(/^\[BOTAO:?\s*/,"").replace(/\]$/,"") : p)
+      .map(p => p.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*(.+?)\*/g, "$1"));
+    const text = `Título: ${item.titulo}\nSubtítulo: ${item.subtitulo}\n\n${plainCorpo.join("\n\n")}${item.ctaText ? "\n\nCTA: " + item.ctaText : ""}`;
+    navigator.clipboard.writeText(text).then(() => {
+      copyBtn.textContent = "Copiado";
+      copyBtn.classList.add("done");
+      setTimeout(() => {
+        copyBtn.textContent = "Copiar título, subtítulo e corpo";
+        copyBtn.classList.remove("done");
+      }, 1800);
+    });
+  });
+
+  return el;
+}
+
+let GLOBAL_COMMENTS = {};
+
+let APP_READY = false;
+
+async function initApp(){
+  if(APP_READY) return;
+  APP_READY = true;
+
+  const [overrides, statuses, comments] = await Promise.all([
+    fetchOverrides(), fetchStatuses(), fetchComments()
+  ]);
+  GLOBAL_COMMENTS = comments;
+
+  // e-mails criados pela página e que não estão no código
+  Object.values(overrides).forEach(ov => {
+    if(ov.excluido || !DATA[ov.regua]) return;
+    const exists = Object.values(DATA).flat().some(i => i.code === ov.code);
+    if(!exists){
+      DATA[ov.regua].push({
+        code:ov.code, date:ov.data_disparo || "A definir", sortDate:ov.sort_date || "", status:"pararevisao",
+        segmento:ov.segmento || "a definir", tag:ov.tag || "", titulo:ov.titulo || "", subtitulo:ov.subtitulo || "",
+        corpo:ov.corpo || [], ctaText:ov.cta, fromDb:true
+      });
+    }
+  });
+
+  Object.keys(DATA).forEach(regua => {
+    DATA[regua] = DATA[regua].filter(item => !(overrides[item.code] && overrides[item.code].excluido));
+    DATA[regua].forEach((item, idx) => {
+      const ov = overrides[item.code];
+      item.posicao = (idx + 1) * 10;
+      if(ov){
+        if(ov.titulo) item.titulo = ov.titulo;
+        if(ov.subtitulo) item.subtitulo = ov.subtitulo;
+        if(ov.corpo) item.corpo = ov.corpo;
+        item.ctaText = ov.cta;
+        if(ov.data_disparo) item.date = ov.data_disparo;
+        if(ov.sort_date) item.sortDate = ov.sort_date;
+        if(ov.posicao !== undefined && ov.posicao !== null) item.posicao = ov.posicao;
+        item.synced = true;
+      } else {
+        item.synced = false;
+      }
+      if(statuses[item.code]) item.status = statuses[item.code];
+    });
+    DATA[regua].sort((a,b) => a.posicao - b.posicao);
+    renderBoard(regua);
+  });
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".board").forEach(b => b.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById("board-" + tab.dataset.r).classList.add("active");
+    });
+  });
+
+  buildTimeline();
+}
+
+function renderBoard(regua){
+  const board = document.getElementById("board-" + regua);
+  board.innerHTML = "";
+  DATA[regua].forEach(item => {
+    board.appendChild(buildPass(item, regua, GLOBAL_COMMENTS[item.code]));
+  });
+  updateTabCount(regua);
+}
+
+function updateTabCount(regua){
+  const tab = document.querySelector(`.tab[data-r="${regua}"] .cnt`);
+  if(tab) tab.textContent = DATA[regua].length;
+}
+
+async function addNewEmail(regua){
+  const existingCodes = new Set();
+  Object.values(DATA).flat().forEach(i => existingCodes.add(i.code));
+  let n = DATA[regua].length + 1;
+  let code = `${LABELS[regua]} ${String(n).padStart(2,"0")}`;
+  while(existingCodes.has(code)){
+    n++;
+    code = `${LABELS[regua]} ${String(n).padStart(2,"0")}`;
+  }
+  const maxPos = DATA[regua].reduce((m,i) => Math.max(m, i.posicao || 0), 0);
+  const today = new Date().toISOString().slice(0,10);
+
+  const novoItem = {
+    code, date:"A definir", sortDate: today, status:"pararevisao",
+    segmento:"a definir", tag:"Novo e-mail, ainda não configurado",
+    titulo:"Novo e-mail (edite este título)",
+    subtitulo:"Edite este subtítulo",
+    corpo:["[IMAGEM: banner do clube]", "Escreva aqui o corpo do e-mail."],
+    ctaText:null, posicao:maxPos + 10, synced:true
+  };
+
+  const { error } = await sb.from(T_EMAILS).insert({
+    code: novoItem.code, regua, segmento: novoItem.segmento, data_disparo: novoItem.date,
+    sort_date: novoItem.sortDate, tag: novoItem.tag, titulo: novoItem.titulo,
+    subtitulo: novoItem.subtitulo, corpo: novoItem.corpo, cta: novoItem.ctaText,
+    posicao: novoItem.posicao
+  });
+
+  if(error){
+    alert("Não consegui criar o e-mail novo. Verifique se a permissão de inserção está liberada no Supabase.");
+    return;
+  }
+
+  DATA[regua].push(novoItem);
+  renderBoard(regua);
+  buildTimeline();
+
+  const board = document.getElementById("board-" + regua);
+  const card = board.querySelector(`.pass[data-code="${CSS.escape(code)}"]`);
+  if(card){
+    card.classList.add("open");
+    card.querySelector('[data-role="edit-area"]').classList.add("open");
+    card.scrollIntoView({behavior:"smooth", block:"center"});
+  }
+}
+
+document.getElementById("add-email-btn").addEventListener("click", () => {
+  const activeTab = document.querySelector(".tab.active");
+  const regua = activeTab ? activeTab.dataset.r : "aquisicao";
+  addNewEmail(regua);
+});
+
+function buildTimeline(){
+  const timelineEl = document.getElementById("timeline");
+  timelineEl.innerHTML = "";
+  const all = [];
+  Object.keys(DATA).forEach(regua => {
+    DATA[regua].forEach(item => all.push({item, regua}));
+  });
+  all.sort((a,b) => (a.item.sortDate || "").localeCompare(b.item.sortDate || ""));
+
+  all.forEach(({item, regua}) => {
+    const chip = document.createElement("div");
+    chip.className = "tchip";
+    chip.setAttribute("data-r", regua);
+    chip.innerHTML = `
+      <div class="tc-date">${item.sortDate ? item.sortDate.slice(5).split("-").reverse().join("/") : item.date}</div>
+      <div class="tc-code">${item.code}</div>
+      <div class="tc-title">${item.titulo}</div>
+    `;
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".board").forEach(b => b.classList.remove("active"));
+      document.querySelector(`.tab[data-r="${regua}"]`).classList.add("active");
+      const board = document.getElementById("board-" + regua);
+      board.classList.add("active");
+      const card = board.querySelector(`.pass[data-code="${CSS.escape(item.code)}"]`);
+      if(card){
+        card.classList.add("open");
+        card.scrollIntoView({behavior:"smooth", block:"center"});
+      }
+    });
+    timelineEl.appendChild(chip);
+  });
+}
+</script>
+</body>
+</html>
