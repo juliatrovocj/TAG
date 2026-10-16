@@ -259,10 +259,9 @@
     cursor:pointer;
   }
   .tchip:hover{background:#e9e0c9;}
-  .tchip[data-r="aquisicao"]{--accent:var(--teal);}
-  .tchip[data-r="reativacao"]{--accent:var(--mustard);}
-  .tchip[data-r="carrinho"]{--accent:var(--rust);}
-  .tchip[data-r="onboarding"]{--accent:var(--sage);}
+  .tchip[data-r="ineditos"]{--accent:var(--teal);}
+  .tchip[data-r="curadoria"]{--accent:var(--mustard);}
+  .tchip[data-r="whatsapp"]{--accent:var(--sage);}
   .tchip .tc-date{
     font-family:'JetBrains Mono',monospace;
     font-size:9.5px;
@@ -350,10 +349,9 @@
     color:var(--ink-soft);
   }
   .tab.active{color:var(--ink);border-bottom:2.5px solid var(--accent);}
-  .tab[data-r="aquisicao"].active{--accent:var(--teal);}
-  .tab[data-r="reativacao"].active{--accent:var(--mustard);}
-  .tab[data-r="carrinho"].active{--accent:var(--rust);}
-  .tab[data-r="onboarding"].active{--accent:var(--sage);}
+  .tab[data-r="ineditos"].active{--accent:var(--teal);}
+  .tab[data-r="curadoria"].active{--accent:var(--mustard);}
+  .tab[data-r="whatsapp"].active{--accent:var(--sage);}
 
   .board{display:none;}
   .board.active{display:block;}
@@ -382,10 +380,9 @@
     color:var(--accent-ink);
     font-weight:600;
   }
-  .pass[data-r="aquisicao"]{--accent:#bcdcd4;--accent-ink:var(--teal-ink);}
-  .pass[data-r="reativacao"]{--accent:#ecd6a6;--accent-ink:var(--mustard-ink);}
-  .pass[data-r="carrinho"]{--accent:#f0c4ab;--accent-ink:var(--rust-ink);}
-  .pass[data-r="onboarding"]{--accent:#cddabd;--accent-ink:var(--sage-ink);}
+  .pass[data-r="ineditos"]{--accent:#bcdcd4;--accent-ink:var(--teal-ink);}
+  .pass[data-r="curadoria"]{--accent:#ecd6a6;--accent-ink:var(--mustard-ink);}
+  .pass[data-r="whatsapp"]{--accent:#cddabd;--accent-ink:var(--sage-ink);}
 
   .pass-head{
     padding:16px 18px;
@@ -528,6 +525,8 @@
     border-radius:8px;
   }
   .corpo .cta{margin:0 0 12px;}
+  .ex-note{border-left:3px solid var(--mustard);background:#f7ecd2;border-radius:0 8px 8px 0;padding:8px 12px;font-size:13.5px;line-height:1.55;color:var(--mustard-ink);margin:0 0 12px;}
+  .ex-note b{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:2px;}
   .comment-block{
     margin-top:18px;
     border-top:1.5px dashed var(--line);
@@ -684,7 +683,40 @@
   }
   .send-btn:hover{background:var(--navy-2);}
 
+
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:0 0 10px;}
+  .bases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;}
+  .base-card{background:#fffdf7;border:1.5px solid var(--line);border-top:4px solid var(--bc);border-radius:12px;padding:14px 16px;}
+  .base-card .bn{font-family:'Fraunces',serif;font-weight:500;font-size:16px;}
+  .base-card .bd{font-size:12px;color:var(--ink-soft);margin-top:4px;line-height:1.4;}
+  .base-card .bq{font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:10px;color:var(--ink-soft);}
+  .base-card .bq b{color:var(--ink);}
+  [data-b="leads"]{--bc:#3a6ea5;--bbg:#dbe7f3;--bink:#1f4c73;}
+  [data-b="cancelados"]{--bc:#b8542f;--bbg:#f6dfd3;--bink:#5c2311;}
+  [data-b="anual"]{--bc:#5e8c46;--bbg:#e2ecdb;--bink:#3c5c2c;}
+  [data-b="combo"]{--bc:#7a4fb0;--bbg:#e7ddf3;--bink:#4a2f77;}
+  [data-b="carrinho"]{--bc:#c08a26;--bbg:#f6e7c6;--bink:#5a3f0f;}
+  .ofertas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;}
+  .of{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;}
+  .of .lv{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--rust-ink);}
+  .of b{font-size:13.5px;}
+  .of .od{font-size:12px;color:var(--ink-soft);line-height:1.45;}
+  .of.combo .lv{color:#4a2f77;}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 2px;}
+  .base-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:20px;background:var(--bbg);color:var(--bink);}
+  .cupom-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.03em;padding:2px 8px;border-radius:20px;border:1px dashed var(--ink-soft);color:var(--ink);}
+  .base-filter{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:-8px 0 18px;}
+  .base-filter span{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-right:4px;}
+  .bchip{font-family:'JetBrains Mono',monospace;font-size:11px;border:1px solid var(--line);background:#fffdf7;color:var(--ink);padding:5px 12px;border-radius:20px;cursor:pointer;}
+  .bchip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .tbtn.ghost{background:none;color:var(--ink);border:1px solid var(--ink);}
+  .tbtn.ghost:hover{background:var(--paper);}
+  .board-empty{font-size:13px;color:var(--ink-soft);padding:12px 0;}
+  @media (max-width:860px){
+    .bases,.ofertas{grid-template-columns:repeat(2,1fr);}
+  }
   @media (max-width:640px){
+    .bases,.ofertas{grid-template-columns:1fr;}
     .fases{grid-template-columns:repeat(2,1fr);}
     .clubes{grid-template-columns:1fr;}
     .hero{padding:28px 24px;}
@@ -708,15 +740,31 @@
 <div class="wrap" id="content">
 
   <div class="hero">
-    <p class="eyebrow">Proposta de CRM · TAG Livros × TAG Inéditos e TAG Curadoria</p>
-    <h1>Régua de e-mails da campanha de assinatura dos clubes</h1>
-    <p>Disparos de outubro para RD Station com foco em novos assinantes de Inéditos e Curadoria: leads que nunca assinaram, ex assinantes e carrinho abandonado. Cada e-mail tem destaques de texto e sinalização de imagens pensados pra um template em PNG, leve e fácil de configurar.</p>
+    <p class="eyebrow">Proposta de CRM · TAG Inéditos e TAG Curadoria · Outubro 2026</p>
+    <h1>Régua de outubro por base: O Retrato de Casamento e A profecia de Dali</h1>
+    <p>Sete e-mails por clube, separados pelas quatro bases da campanha: leads, cancelados recentes, upsell do mensal para o anual e upsell de um para dois clubes. As ofertas sobem de nível a cada leva, os textos partem do mapa de argumentos de set/out e cada card mostra a base e o cupom do disparo.</p>
     <div class="stat-row">
-      <div class="stat"><b>2</b><span>clubes</span></div>
-      <div class="stat"><b>6</b><span>datas de régua</span></div>
+      <div class="stat"><b>7 + 7</b><span>e-mails por clube</span></div>
+      <div class="stat"><b>12 a 28/10</b><span>janela de disparos</span></div>
+      <div class="stat"><b>4</b><span>bases</span></div>
       <div class="stat"><b>12%</b><span>meta de share CRM</span></div>
-      <div class="stat"><b>40 a 50</b><span>novatos por semana</span></div>
     </div>
+  </div>
+
+  <div class="section-label">Bases e disparos por clube</div>
+  <div class="bases">
+    <div class="base-card" data-b="leads"><div class="bn">Leads</div><div class="bd">Recebem a comunicação, mas não são assinantes ativos</div><div class="bq"><b>3 e-mails</b> · 12/10 (enviado), 20/10 e 26/10</div></div>
+    <div class="base-card" data-b="cancelados"><div class="bn">Cancelados recentes</div><div class="bd">Cancelaram a assinatura nos últimos meses</div><div class="bq"><b>2 e-mails</b> · 21/10 e 27/10</div></div>
+    <div class="base-card" data-b="anual"><div class="bn">Upsell mensal → anual</div><div class="bd">Assinantes do plano mensal</div><div class="bq"><b>1 e-mail</b> · 22/10</div></div>
+    <div class="base-card" data-b="combo"><div class="bn">Upsell 1 → 2 clubes</div><div class="bd">Assinam um clube e podem passar ao combo</div><div class="bq"><b>1 e-mail</b> · 28/10</div></div>
+  </div>
+
+  <div class="section-label">Hierarquia de ofertas</div>
+  <div class="ofertas">
+    <div class="of"><span class="lv">1ª oferta</span><b>Cupom de frete grátis</b><span class="od">O desconto mais básico. Já usado no e-mail de 12/10 para leads.</span></div>
+    <div class="of"><span class="lv">2ª oferta</span><b>Diário de leitura · QUERODIARIO</b><span class="od">Próxima leva: leads (20/10), primeiro contato com cancelados (21/10) e upsell para o anual (22/10).</span></div>
+    <div class="of"><span class="lv">3ª oferta</span><b>Kit extra de presente</b><span class="od">Última oferta, no retorno de 26 e 27/10. Curadoria: QUEROCHIMAMANDA100OFF. Inéditos: [CUPOM INÉDITOS], a confirmar.</span></div>
+    <div class="of combo"><span class="lv">Upsell</span><b>Combo · QUEROCOMBO</b><span class="od">Para quem assina um clube passar a assinar os dois (28/10).</span></div>
   </div>
 
   <div class="clubes">
@@ -724,23 +772,16 @@
       <div class="nm">TAG Inéditos</div>
       <div class="ln"><span class="lbl">Livro do mês</span><b>O Retrato de Casamento</b>, Maggie O’Farrell, a autora de Hamnet</div>
       <div class="ln"><span class="lbl">Kit extra</span><b>As mulheres-leão de Teerã</b>, Marjan Kamali</div>
-      <div class="ln"><span class="lbl">Argumento</span>Livros que chegam ao Brasil pela TAG; quem assina lê primeiro</div>
+      <div class="ln"><span class="lbl">Argumentos do mapa</span>Da autora de Hamnet; a duquesa do poema de Browning; por dentro de Lucrezia; as regras que escolheram por ela; quem assina lê primeiro</div>
     </div>
     <div class="clube">
       <div class="nm">TAG Curadoria</div>
       <div class="ln"><span class="lbl">Livro do mês</span><b>A profecia de Dali</b>, Balla Fofana, finalista do Prix des 5 continents</div>
       <div class="ln"><span class="lbl">Kit extra</span><b>A contagem dos sonhos</b>, Chimamanda Ngozi Adichie, o primeiro romance dela em mais de dez anos</div>
-      <div class="ln"><span class="lbl">Argumento</span>Chega ao Brasil pela caixinha, em edição exclusiva</div>
+      <div class="ln"><span class="lbl">Argumentos do mapa</span>Primeiro romance premiado de um jornalista; a escola que decidiu antes de ouvir; a mãe que atravessou o mundo; um livro sobre exílio que faz rir</div>
     </div>
   </div>
-  <div class="oferta"><b>Oferta em todos os disparos:</b> kit extra na assinatura e frete grátis o ano todo no plano anual. O cupom de CRM fica guardado para a última chamada (26/10) e para o carrinho abandonado. <b>Ponto de partida:</b> na semana de 28/09 o share de CRM foi 5,7%, com cerca de 16 novatos, quase todos por WhatsApp; por isso cada disparo de e-mail ganha um espelho em WhatsApp no mesmo dia.</div>
-
-  <div class="fases">
-    <div class="fase"><div class="dt">Fase 01 · 09/10</div><div class="nm">Escassez dos kits</div><div class="obj">Últimas oportunidades para levar dois kits de uma vez, com prazo no assunto e no P.S.</div></div>
-    <div class="fase"><div class="dt">Fase 02 · 13 a 15/10</div><div class="nm">Kit extra e plano anual</div><div class="obj">O livro do kit extra vira protagonista; depois, a conta do plano anual com frete grátis.</div></div>
-    <div class="fase"><div class="dt">Fase 03 · 20 a 22/10</div><div class="nm">Quem assina lê primeiro</div><div class="obj">Responder “por que não compro na livraria?” e lembrar do kit antes da pausa do segundo turno.</div></div>
-    <div class="fase"><div class="dt">Fase 04 · 26/10</div><div class="nm">Última chamada</div><div class="obj">Retorno com cupom de CRM, kit extra e frete anual, a condição mais completa da campanha.</div></div>
-  </div>
+  <div class="oferta"><b>Calendário:</b> sem disparos de 23 a 25/10, por causa do segundo turno; o retorno de segunda, 26/10, traz a oferta mais forte. Carrinho abandonado roda de segunda a quinta no WhatsApp. <b>Fora dos textos, como pede o mapa:</b> o final dos dois livros, o verbo “sobreviver”, Lucrezia como “à frente do seu tempo”, o romance secundário de O Retrato e pobreza ou racismo tratados como choque.</div>
 
   <div class="timeline-wrap">
     <div class="timeline-label">Linha do tempo de todos os disparos</div>
@@ -756,23 +797,31 @@
   </div>
 
   <div class="toolbar">
-    <div class="toolbar-text">Comentários, status e edições de texto são salvos automaticamente e ficam visíveis pra todo mundo que abrir esta página, não precisa exportar nada. Pra editar um e-mail, abra o card e clique em "Editar texto". Pra adicionar um e-mail novo, use o botão abaixo, ele entra na régua que estiver aberta na aba.</div>
+    <div class="toolbar-text">Comentários, status e edições de texto são salvos automaticamente e ficam visíveis pra todo mundo que abrir esta página. Pra editar um e-mail, abra o card e clique em "Editar texto". “Exportar todos para o Drive” baixa um arquivo .doc com todos os e-mails, já com as edições salvas; é só subir no Drive que ele abre no Google Docs.</div>
     <div class="toolbar-actions">
-      <button class="tbtn" id="add-email-btn" type="button">+ Novo e-mail nesta régua</button>
+      <button class="tbtn" id="export-btn" type="button">Exportar todos para o Drive</button>
+      <button class="tbtn ghost" id="add-email-btn" type="button">+ Novo e-mail nesta aba</button>
     </div>
   </div>
 
   <div class="tabs">
-    <button class="tab active" data-r="aquisicao">Aquisição <span class="cnt">0</span></button>
-    <button class="tab" data-r="reativacao">Reativação <span class="cnt">0</span></button>
-    <button class="tab" data-r="carrinho">Carrinho abandonado <span class="cnt">0</span></button>
-    <button class="tab" data-r="onboarding">Onboarding <span class="cnt">0</span></button>
+    <button class="tab active" data-r="ineditos">Inéditos <span class="cnt">0</span></button>
+    <button class="tab" data-r="curadoria">Curadoria <span class="cnt">0</span></button>
+    <button class="tab" data-r="whatsapp">WhatsApp carrinho <span class="cnt">0</span></button>
   </div>
 
-  <div id="board-aquisicao" class="board active"></div>
-  <div id="board-reativacao" class="board"></div>
-  <div id="board-carrinho" class="board"></div>
-  <div id="board-onboarding" class="board"></div>
+  <div class="base-filter" id="base-filter">
+    <span>Base</span>
+    <button type="button" class="bchip" data-b="all" aria-pressed="true">Todas</button>
+    <button type="button" class="bchip" data-b="leads" aria-pressed="false">Leads</button>
+    <button type="button" class="bchip" data-b="cancelados" aria-pressed="false">Cancelados</button>
+    <button type="button" class="bchip" data-b="anual" aria-pressed="false">Upsell anual</button>
+    <button type="button" class="bchip" data-b="combo" aria-pressed="false">Upsell combo</button>
+  </div>
+
+  <div id="board-ineditos" class="board active"></div>
+  <div id="board-curadoria" class="board"></div>
+  <div id="board-whatsapp" class="board"></div>
 
 </div>
 
@@ -810,477 +859,332 @@ document.getElementById("lock-input").addEventListener("keydown", (e) => {
   if(e.key === "Enter") tryUnlock();
 });
 
+const BASES = {
+  leads:{nome:"Leads", desc:"Recebem a comunicação, mas não são assinantes ativos"},
+  cancelados:{nome:"Cancelados recentes", desc:"Cancelaram a assinatura nos últimos meses"},
+  anual:{nome:"Upsell mensal → anual", desc:"Assinantes do plano mensal"},
+  combo:{nome:"Upsell 1 → 2 clubes", desc:"Assinam um clube e podem passar ao combo"},
+  carrinho:{nome:"Carrinho abandonado", desc:"Começaram a assinatura e não concluíram"}
+};
+const OFERTAS = {
+  frete:{nivel:"1ª oferta", nome:"Frete grátis"},
+  diario:{nivel:"2ª oferta", nome:"Diário de leitura · QUERODIARIO"},
+  kitin:{nivel:"3ª oferta", nome:"Kit extra · [CUPOM INÉDITOS]"},
+  kitcu:{nivel:"3ª oferta", nome:"Kit extra · QUEROCHIMAMANDA100OFF"},
+  combo:{nivel:"Upsell", nome:"Combo · QUEROCOMBO"},
+  semcupom:{nivel:"Lembrete", nome:"Sem cupom"}
+};
+
 const DATA = {
-aquisicao: [
+ineditos: [
 {
-  code:"AQ 01 IN", clube:"in", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
-  tag:"Escassez: últimas oportunidades para os dois kits · Assunto B: Dois romances numa assinatura só, até [DATA]",
-  titulo:"Últimos dias: O Retrato de Casamento + um livro de presente",
-  subtitulo:"Da autora de Hamnet, com As mulheres-leão de Teerã no kit extra.",
+  code:"IN L1", base:"leads", oferta:"frete", date:"12/10 (seg) · enviado", sortDate:"2026-10-12", status:"enviado", segmento:"Leads · Inéditos",
+  tag:"Primeiro toque nos leads. Ganchos A + E do mapa: pergunta sobre o tema na abertura, sinopse com os temas nomeados e oferta só no fim",
+  titulo:"Como é crescer sabendo que todas as decisões da sua vida já foram tomadas?",
+  subtitulo:"O Retrato de Casamento, da autora de Hamnet, é o livro de outubro da TAG Inéditos.",
+  assuntoB:"Prometeram a ela um casamento. Ninguém a preparou para resistir a ele.",
+  assuntoEx:"",
   corpo:[
-    "[IMAGEM: banner do clube com os dois kits lado a lado]",
-    "Oi, [nome],",
-    "Até **[DATA]**, quem assina a TAG Inéditos recebe **dois kits de uma vez**. Depois disso, o kit extra sai da oferta.",
-    "[BOTAO: Quero os dois kits]",
-    "**Kit do mês · O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. Itália, século XVI: uma jovem duquesa, um casamento que ela não escolheu e um retrato que mostra o rosto, mas não o que ela pensava. *Nossos associados já colocam entre as melhores leituras do ano.*",
-    "[IMAGEM: capa de O Retrato de Casamento]",
-    "**Kit extra · As mulheres-leão de Teerã**, de Marjan Kamali. Duas amigas, uma promessa feita na infância e uma cidade que muda inteira ao redor delas.",
-    "[IMAGEM: capa de As mulheres-leão de Teerã]",
-    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
-    "São livros que chegam ao Brasil pela TAG. Você não encontra na livraria da esquina.",
-    "*P.S. Daqui a poucos dias, a mesma assinatura volta a vir com um livro só. O segundo é de quem decidir agora.*"
-  ],
-  ctaText:"Garantir até [DATA]"
-},
-{
-  code:"AQ 01 CU", clube:"cu", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
-  tag:"Escassez: últimas oportunidades para os dois kits · Assunto B: Dois romances numa assinatura só, até [DATA]",
-  titulo:"Últimos dias: uma Chimamanda de presente na sua assinatura",
-  subtitulo:"A profecia de Dali no kit do mês e A contagem dos sonhos no kit extra.",
-  corpo:[
-    "[IMAGEM: banner do clube com os dois kits lado a lado]",
-    "Oi, [nome],",
-    "Até **[DATA]**, quem assina a TAG Curadoria recebe **dois kits de uma vez**. Depois disso, o kit extra sai da oferta.",
-    "[BOTAO: Quero os dois kits]",
-    "**Kit extra · A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos. Quatro mulheres, entre a Nigéria e os Estados Unidos, fazendo as contas dos amores e das escolhas que as trouxeram até ali.",
-    "[IMAGEM: capa de A contagem dos sonhos]",
-    "**Kit do mês · A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie. Um menino chega do Mali à periferia de Paris sem falar francês, e a escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês.",
-    "[IMAGEM: capa de A profecia de Dali]",
-    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
-    "*P.S. Daqui a poucos dias, a mesma assinatura volta a vir com um livro só. O segundo é de quem decidir agora.*"
-  ],
-  ctaText:"Garantir até [DATA]"
-},
-{
-  code:"AQ 02 IN", clube:"in", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
-  tag:"Kit extra como protagonista, com pergunta na abertura · Assunto B: As mulheres-leão de Teerã vêm de presente na sua assinatura",
-  titulo:"Quanto uma amizade aguenta quando o país inteiro muda?",
-  subtitulo:"O kit extra que acompanha O Retrato de Casamento, da autora de Hamnet.",
-  corpo:[
-    "[IMAGEM: capa de As mulheres-leão de Teerã em destaque]",
-    "Oi, [nome],",
-    "Teerã, anos 1950. Duas meninas se conhecem na escola e fazem uma promessa de amizade. Nas décadas seguintes, a cidade muda por completo ao redor delas, e a promessa é posta à prova.",
-    "Esse é **As mulheres-leão de Teerã**, de Marjan Kamali. E ele pode chegar na sua casa **sem custo a mais**.",
-    "[BOTAO: Quero meu kit extra]",
-    "**Assinando a TAG Inéditos agora, você recebe:** O Retrato de Casamento, o novo romance de Maggie O’Farrell, a autora de Hamnet; As mulheres-leão de Teerã, no kit extra; e frete grátis o ano todo no plano anual.",
-    "[IMAGEM: os dois livros lado a lado]",
-    "*Dois romances sobre mulheres que encontraram força onde ninguém esperava, e que você lê antes de chegarem às livrarias.*",
+    "[IMAGEM: close num retrato renascentista, com a capa de O Retrato de Casamento ao lado]",
+    "**Florença, século XVI.** Lucrezia não escolheu o casamento, o marido nem o palácio para onde foi levada. Na corte, as mulheres existiam para ser vistas e para dar herdeiros.",
+    "Em **O Retrato de Casamento**, Maggie O’Farrell olha para as regras que escolheram por ela, e faz isso de dentro da cabeça da protagonista. *O retrato mostrava o rosto. O livro mostra o que ela pensava.*",
+    "[BOTAO: Quero ler O Retrato de Casamento]",
+    "Casamento arranjado, a corte dos Medici, pinturas, tecidos e palácios. É uma leitura para olhar de perto, como quem se aproxima de um quadro, com uma tensão que cresce devagar até o fim.",
+    "[IMAGEM: capa com o selo “da autora de Hamnet”]",
+    "**Assinando a TAG Inéditos agora, você recebe** O Retrato de Casamento no kit de outubro, o kit extra com As mulheres-leão de Teerã e frete grátis o ano todo no plano anual.",
     "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
-  ],
-  ctaText:"Assinar com kit extra"
-},
-{
-  code:"AQ 02 CU", clube:"cu", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
-  tag:"Kit extra como protagonista, nome da autora no assunto · Assunto B: O que você faria se o mundo parasse por um tempo?",
-  titulo:"O novo romance da Chimamanda pode ser seu de presente",
-  subtitulo:"A contagem dos sonhos vem no kit extra da TAG Curadoria.",
-  corpo:[
-    "[IMAGEM: capa de A contagem dos sonhos em destaque]",
-    "Oi, [nome],",
-    "Foram mais de dez anos de espera por um novo romance de **Chimamanda Ngozi Adichie**. A contagem dos sonhos acompanha quatro mulheres, entre a Nigéria e os Estados Unidos, num momento em que o mundo para e sobra tempo para encarar os amores e as escolhas de uma vida.",
-    "Assinando a TAG Curadoria agora, ele chega **como kit extra**.",
-    "[BOTAO: Quero meu kit extra]",
-    "**Você recebe:** A contagem dos sonhos, no kit extra; A profecia de Dali, de Balla Fofana, finalista do Prix des 5 continents, que chega ao Brasil pela caixinha da TAG; e frete grátis o ano todo no plano anual.",
-    "[IMAGEM: os dois livros lado a lado]",
-    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
-  ],
-  ctaText:"Assinar com kit extra"
-},
-{
-  code:"AQ 03 IN", clube:"in", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
-  tag:"A conta do plano anual, kit extra + frete do ano · Assunto B: A conta do plano anual da TAG Inéditos",
-  titulo:"Dois livros agora e um ano sem pagar frete",
-  subtitulo:"O Retrato de Casamento + As mulheres-leão de Teerã, e frete grátis em todas as caixinhas.",
-  corpo:[
-    "[IMAGEM: banner com a conta do plano anual em três linhas]",
-    "Oi, [nome],",
-    "Fizemos a conta do plano anual da TAG Inéditos para você:",
-    "**2 livros logo na primeira entrega:** O Retrato de Casamento, de Maggie O’Farrell, e As mulheres-leão de Teerã, de Marjan Kamali.",
-    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
-    "**12 romances** que você lê antes de chegarem às livrarias do Brasil.",
-    "[BOTAO: Assinar o plano anual]",
-    "*Se você já pensava em assinar, este é o momento em que a assinatura vale mais.*",
-    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
-  ],
-  ctaText:"Assinar o plano anual"
-},
-{
-  code:"AQ 03 CU", clube:"cu", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
-  tag:"A conta do plano anual, kit extra + frete do ano · Assunto B: A conta do plano anual da TAG Curadoria",
-  titulo:"Dois livros agora e um ano sem pagar frete",
-  subtitulo:"A profecia de Dali + A contagem dos sonhos, e frete grátis em todas as caixinhas.",
-  corpo:[
-    "[IMAGEM: banner com a conta do plano anual em três linhas]",
-    "Oi, [nome],",
-    "Fizemos a conta do plano anual da TAG Curadoria para você:",
-    "**2 livros logo na primeira entrega:** A profecia de Dali, de Balla Fofana, e A contagem dos sonhos, de Chimamanda Ngozi Adichie.",
-    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
-    "**12 livros indicados por curadores convidados**, em edições exclusivas.",
-    "[BOTAO: Assinar o plano anual]",
-    "*Se você já pensava em assinar, este é o momento em que a assinatura vale mais.*",
-    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
-  ],
-  ctaText:"Assinar o plano anual"
-},
-{
-  code:"AQ 04 IN", clube:"in", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
-  tag:"Responde à objeção “por que não compro na livraria?” · Assunto B: Leia primeiro o livro de que todo mundo vai falar",
-  titulo:"Antes de virar assunto, já estava na caixinha",
-  subtitulo:"O Retrato de Casamento, da autora de Hamnet, com um livro de presente.",
-  corpo:[
-    "[IMAGEM: fileira de capas que passaram pelo Inéditos antes de virar conversa]",
-    "Oi, [nome],",
-    "[TÍTULO 1], [TÍTULO 2] e As mulheres-leão de Teerã passaram pela caixinha da TAG Inéditos antes de virar conversa. **Quem assina leu primeiro.**",
-    "O próximo da lista é **O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. *O retrato mostrava o rosto de Lucrezia. O livro mostra o que ela pensava.*",
-    "[BOTAO: Quero ler primeiro]",
-    "Assinando agora, você recebe O Retrato de Casamento e o **kit extra com As mulheres-leão de Teerã**. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. Quem assina agora recebe também o kit extra, até [DATA].*"
   ],
   ctaText:"Assinar a TAG Inéditos"
 },
 {
-  code:"AQ 04 CU", clube:"cu", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
-  tag:"Pergunta sobre o tema e contexto do autor · Assunto B: Este livro chega ao Brasil pela caixinha da TAG",
-  titulo:"O que acontece quando a escola decide que você não vai aprender?",
-  subtitulo:"A profecia de Dali, finalista do Prix des 5 continents, com a Chimamanda de presente.",
+  code:"IN L2", base:"leads", oferta:"diario", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"Leads · Inéditos",
+  tag:"Segundo toque nos leads, com a 2ª oferta. Ganchos B + C do mapa: selo “da autora de Hamnet” na primeira frase e o contexto do poema de Browning",
+  titulo:"Se Hamnet te deixou sem chão, espere até conhecer Lucrezia",
+  subtitulo:"Da autora de Hamnet, com um diário de leitura de presente para quem assinar agora.",
+  assuntoB:"Browning deu a palavra ao duque. Maggie O’Farrell devolve a história à duquesa.",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: Hamnet e O Retrato de Casamento lado a lado]",
+    "**Da mesma autora de Hamnet, uma nova vida recuperada do silêncio.**",
+    "Existe um poema famoso sobre a mulher deste livro: “My Last Duchess”, de Robert Browning. Nele, quem fala o tempo todo é o duque, e ela não diz uma palavra. Em **O Retrato de Casamento**, Maggie O’Farrell devolve a história à duquesa.",
+    "[BOTAO: Quero conhecer Lucrezia]",
+    "*A história já tem um desfecho conhecido. O livro faz a gente duvidar dele até a última página.*",
+    "[IMAGEM: diário de leitura ao lado da caixinha do Inéditos]",
+    "**Presente para quem assinar agora:** com o cupom **QUERODIARIO**, sua assinatura da TAG Inéditos vem com um **diário de leitura** pra registrar trechos e impressões de cada livro do ano.",
+    "*P.S. O cupom QUERODIARIO vale até [DATA].*"
+  ],
+  ctaText:"Assinar com QUERODIARIO"
+},
+{
+  code:"IN L3", base:"leads", oferta:"kitin", date:"26/10 (seg) · retorno pós segundo turno", sortDate:"2026-10-26", status:"pararevisao", segmento:"Leads · Inéditos",
+  tag:"Último toque nos leads, com a oferta mais forte. Gancho F do mapa: os dois livros visíveis, tagline V2 e prazo no assunto e no P.S.",
+  titulo:"Dois livros numa assinatura só: Lucrezia e as mulheres-leão de Teerã",
+  subtitulo:"A última oferta da campanha: o kit extra de presente na sua assinatura da TAG Inéditos.",
+  assuntoB:"Prometeram a ela um casamento. Ninguém a preparou para resistir a ele.",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: estático com O Retrato de Casamento e As mulheres-leão de Teerã lado a lado, selo “da autora de Hamnet”]",
+    "*Prometeram a ela um casamento. Ninguém a preparou para resistir a ele.*",
+    "Esse é **O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. E, até **[DATA]**, ele não chega sozinho.",
+    "[BOTAO: Quero os dois livros]",
+    "**Kit extra · As mulheres-leão de Teerã**, de Marjan Kamali. Teerã, anos 1950: duas meninas fazem uma promessa de amizade, e a cidade muda por completo ao redor delas.",
+    "Com o cupom **[CUPOM INÉDITOS]**, o kit extra vem de presente na sua assinatura. São duas histórias de mulheres que encontraram força onde ninguém esperava.",
+    "*P.S. Esta é a última oferta da campanha. Depois de [DATA], a assinatura volta a vir com um livro só.*"
+  ],
+  ctaText:"Assinar com kit extra"
+},
+{
+  code:"IN C1", base:"cancelados", oferta:"diario", date:"21/10 (qua)", sortDate:"2026-10-21", status:"pararevisao", segmento:"Cancelados recentes · Inéditos",
+  tag:"Primeiro contato com quem cancelou, com a 2ª oferta. Gancho D do mapa (por dentro de Lucrezia) e prova social de associados",
+  titulo:"Desde que você saiu, a caixinha do Inéditos trouxe Lucrezia",
+  subtitulo:"O Retrato de Casamento, da autora de Hamnet, é o livro de outubro. E tem um presente pra sua volta.",
+  assuntoB:"O retrato mostrava o rosto. O livro mostra o que ela pensava.",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: capa de O Retrato de Casamento sobre a caixinha do Inéditos]",
+    "Oi, [nome],",
+    "Faz pouco tempo que você deixou o Inéditos, e a caixinha de outubro chegou com um daqueles livros que ficam com a gente dias depois da última página.",
+    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet, conta a história de Lucrezia de dentro da cabeça dela. *O retrato mostrava o rosto. O livro mostra o que ela pensava.*",
+    "[BOTAO: Quero voltar para o Inéditos]",
+    "**Quem já leu por aqui:** “[TRECHO CURTO DE RESENHA DE ASSOCIADO NO APP, SEM SPOILER]”, [NOME], associada da TAG.",
+    "[IMAGEM: diário de leitura]",
+    "**Pra sua volta:** com o cupom **QUERODIARIO**, a assinatura chega com um **diário de leitura** de presente.",
+    "*P.S. O cupom vale até [DATA].*"
+  ],
+  ctaText:"Voltar com QUERODIARIO"
+},
+{
+  code:"IN C2", base:"cancelados", oferta:"kitin", date:"27/10 (ter)", sortDate:"2026-10-27", status:"pararevisao", segmento:"Cancelados recentes · Inéditos",
+  tag:"Segundo contato com quem cancelou, com a última oferta. Gancho F do mapa: os dois livros visíveis e prazo",
+  titulo:"Sua volta ao Inéditos com dois livros de uma vez",
+  subtitulo:"O Retrato de Casamento + As mulheres-leão de Teerã de presente, só até [DATA].",
+  assuntoB:"[nome], o kit extra do Inéditos está separado pra você",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: os dois livros lado a lado sobre a caixinha]",
+    "Oi, [nome],",
+    "Esta é a melhor condição que vamos oferecer para a sua volta, e ela termina em **[DATA]**.",
+    "[BOTAO: Voltar com os dois livros]",
+    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet, no kit de outubro.",
+    "**As mulheres-leão de Teerã**, de Marjan Kamali, no kit extra, de presente com o cupom **[CUPOM INÉDITOS]**.",
+    "Os livros do Inéditos chegam ao Brasil pela TAG. *Fora da caixinha, você ainda não encontra.*",
+    "*P.S. Depois de [DATA], o kit extra sai da oferta.*"
+  ],
+  ctaText:"Voltar com kit extra"
+},
+{
+  code:"IN UA", base:"anual", oferta:"diario", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"Assinantes do plano mensal · Inéditos",
+  tag:"Upsell de plano para quem já recebe o Inéditos no mensal. Argumento: frete grátis o ano todo, com o diário como incentivo para trocar agora",
+  titulo:"[nome], seu Inéditos pode vir sem frete pelos próximos 12 meses",
+  subtitulo:"Passe para o plano anual e ganhe um diário de leitura de presente.",
+  assuntoB:"A conta do plano anual do Inéditos, feita pra você",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: caixinha do Inéditos com selo “frete grátis o ano todo”]",
+    "Oi, [nome],",
+    "Você já recebe o Inéditos todo mês. Neste mês, com **O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet.",
+    "No **plano anual**, as próximas caixinhas chegam com **frete grátis o ano todo**. Na prática, cerca de **[R$ X]** que ficam com você ao longo de 12 meses, sem mudar nada no que chega.",
+    "[BOTAO: Passar para o plano anual]",
+    "[IMAGEM: diário de leitura]",
+    "**E pra trocar agora:** com o cupom **QUERODIARIO**, a mudança para o anual vem com um **diário de leitura** de presente, pra registrar os 12 livros do ano.",
+    "*P.S. O cupom vale até [DATA].*"
+  ],
+  ctaText:"Mudar para o anual"
+},
+{
+  code:"IN UC", base:"combo", oferta:"combo", date:"28/10 (qua)", sortDate:"2026-10-28", status:"pararevisao", segmento:"Assinantes só do Inéditos · upsell para o combo",
+  tag:"Upsell para o combo de quem assina só o Inéditos: apresenta a Curadoria pelo livro do mês, com selo de prêmio (ganchos B + C)",
+  titulo:"Você já lê primeiro no Inéditos. Que tal ler também o que chega pela Curadoria?",
+  subtitulo:"A profecia de Dali, finalista do Prix des 5 continents, com o cupom QUEROCOMBO.",
+  assuntoB:"Um menino chega do Mali a Paris sem falar francês. Anos depois, escreve este livro.",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: caixinha do Inéditos e da Curadoria lado a lado]",
+    "Oi, [nome],",
+    "No Inéditos, você recebe romances antes de chegarem às livrarias. Na **TAG Curadoria**, cada mês traz um livro indicado por um curador convidado, em edição exclusiva.",
+    "O de outubro é **A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie: um menino chega do Mali à periferia de Paris sem falar francês e, anos depois, escreve este livro em francês.",
+    "[BOTAO: Quero os dois clubes]",
+    "**Com o cupom QUEROCOMBO**, você soma a Curadoria à sua assinatura com **[BENEFÍCIO DO QUEROCOMBO]**. Assim, todo mês chegam O Retrato de Casamento e A profecia de Dali, e depois os próximos dos dois clubes.",
+    "*P.S. O cupom QUEROCOMBO vale até [DATA].*"
+  ],
+  ctaText:"Assinar o combo"
+}
+],
+curadoria: [
+{
+  code:"CU L1", base:"leads", oferta:"frete", date:"12/10 (seg) · enviado", sortDate:"2026-10-12", status:"enviado", segmento:"Leads · Curadoria",
+  tag:"Primeiro toque nos leads. Ganchos A + E do mapa: pergunta sobre o tema na abertura, sinopse com os temas nomeados e oferta só no fim",
+  titulo:"O que acontece com uma criança quando a escola decide, antes de ouvi-la, que ela não vai aprender?",
+  subtitulo:"A profecia de Dali é o livro de outubro da TAG Curadoria.",
+  assuntoB:"Ele chegou à França sem falar francês. Anos depois, escreveu este livro em francês.",
+  assuntoEx:"",
   corpo:[
     "[IMAGEM: capa de A profecia de Dali em destaque]",
-    "Oi, [nome],",
-    "Um menino chega do Mali à periferia de Paris sem falar francês. A escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês, e o livro chega à final de **um dos principais prêmios da língua**.",
-    "**A profecia de Dali**, de Balla Fofana, chega ao Brasil pela caixinha da TAG Curadoria.",
-    "[BOTAO: Quero ler primeiro]",
-    "Assinando agora, ele vem com o **kit extra de A contagem dos sonhos**, de Chimamanda Ngozi Adichie. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. Quem assina agora recebe também o kit extra, até [DATA].*"
+    "**Periferia de Paris, anos 1990.** Um menino chega do Mali sem falar francês. Antes de ouvi-lo, a escola o manda para uma classe de alunos rotulados como incapazes de aprender.",
+    "**Ele chegou à França sem falar francês. Anos depois, escreveu este livro em francês.**",
+    "[BOTAO: Quero ler A profecia de Dali]",
+    "**A profecia de Dali**, de Balla Fofana, fala de exílio, escola e família com uma energia que pega o leitor de surpresa. A crítica francesa destacou o humor e o otimismo da voz do menino, que se mistura à do adulto que ele se tornou.",
+    "O livro chega ao Brasil pela caixinha da TAG Curadoria, em edição exclusiva.",
+    "**Assinando a TAG Curadoria agora, você recebe** A profecia de Dali no kit de outubro, o kit extra com A contagem dos sonhos, de Chimamanda Ngozi Adichie, e frete grátis o ano todo no plano anual.",
+    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
   ],
   ctaText:"Assinar a TAG Curadoria"
 },
 {
-  code:"AQ 05 IN", clube:"in", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"leads e ex assinantes · Inéditos",
-  tag:"Lembrete curto antes da pausa de sexta a domingo · Assunto B: O Retrato de Casamento + As mulheres-leão de Teerã: decida antes do fim de semana",
-  titulo:"Seu kit extra ainda está separado",
-  subtitulo:"Dois livros e frete grátis o ano todo no plano anual.",
+  code:"CU L2", base:"leads", oferta:"diario", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"Leads · Curadoria",
+  tag:"Segundo toque nos leads, com a 2ª oferta. Ganchos B + C + D do mapa: selo do prêmio na primeira frase, contexto do autor e o centro afetivo na mãe",
+  titulo:"Uma mãe deixa tudo para trás para dar outro futuro aos filhos",
+  subtitulo:"Anos depois, o filho conta essa história. E quem assina agora ganha um diário de leitura.",
+  assuntoB:"O primeiro romance de um jornalista do Libération, finalista de um dos principais prêmios da língua francesa",
+  assuntoEx:"",
   corpo:[
-    "Oi, [nome],",
-    "Seu kit extra ainda está separado. Assinando a TAG Inéditos até **[DATA]**, você recebe:",
-    "**O Retrato de Casamento**, de Maggie O’Farrell",
-    "**As mulheres-leão de Teerã**, de Marjan Kamali, no kit extra",
-    "**Frete grátis o ano todo** no plano anual",
-    "*O e-mail mais curto da régua, feito para quem já abriu os anteriores.*"
+    "[IMAGEM: capa de A profecia de Dali com selo do Prix des 5 continents]",
+    "**O primeiro romance de Balla Fofana**, jornalista do Libération, foi finalista do Prix des 5 continents de la Francophonie 2024, um dos principais prêmios da literatura em língua francesa.",
+    "No centro da história está **Na**, a mãe. Ela deixa a aldeia no Mali e rompe com tradições para dar outro futuro aos filhos. Anos depois, o filho conta essa história.",
+    "[BOTAO: Quero ler A profecia de Dali]",
+    "*Quem espera um livro triste se surpreende: a crítica francesa fala em energia, humor e otimismo.*",
+    "[IMAGEM: diário de leitura ao lado da caixinha da Curadoria]",
+    "**Presente para quem assinar agora:** com o cupom **QUERODIARIO**, sua assinatura da TAG Curadoria vem com um **diário de leitura** pra registrar trechos e impressões de cada livro do ano.",
+    "*P.S. O cupom QUERODIARIO vale até [DATA].*"
   ],
-  ctaText:"Garantir meus dois livros"
+  ctaText:"Assinar com QUERODIARIO"
 },
 {
-  code:"AQ 05 CU", clube:"cu", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"leads e ex assinantes · Curadoria",
-  tag:"Lembrete curto antes da pausa de sexta a domingo · Assunto B: A profecia de Dali + A contagem dos sonhos: decida antes do fim de semana",
-  titulo:"Seu kit extra ainda está separado",
-  subtitulo:"Dois livros e frete grátis o ano todo no plano anual.",
+  code:"CU L3", base:"leads", oferta:"kitcu", date:"26/10 (seg) · retorno pós segundo turno", sortDate:"2026-10-26", status:"pararevisao", segmento:"Leads · Curadoria",
+  tag:"Último toque nos leads, com a oferta mais forte. Gancho B do mapa (autora conhecida no assunto) e gancho F: os dois livros visíveis e prazo",
+  titulo:"O novo romance da Chimamanda, de presente na sua assinatura",
+  subtitulo:"A última oferta da campanha: A contagem dos sonhos sai por R$ 0 com o cupom QUEROCHIMAMANDA100OFF.",
+  assuntoB:"Mais de dez anos depois, um novo romance de Chimamanda Ngozi Adichie",
+  assuntoEx:"",
   corpo:[
-    "Oi, [nome],",
-    "Seu kit extra ainda está separado. Assinando a TAG Curadoria até **[DATA]**, você recebe:",
-    "**A profecia de Dali**, de Balla Fofana",
-    "**A contagem dos sonhos**, de Chimamanda Ngozi Adichie, no kit extra",
-    "**Frete grátis o ano todo** no plano anual",
-    "*O e-mail mais curto da régua, feito para quem já abriu os anteriores.*"
+    "[IMAGEM: estático com A contagem dos sonhos e A profecia de Dali lado a lado]",
+    "**Foram mais de dez anos de espera por um novo romance de Chimamanda Ngozi Adichie.** A contagem dos sonhos acompanha quatro mulheres, entre a Nigéria e os Estados Unidos, num momento em que o mundo para e sobra tempo para encarar os amores e as escolhas de uma vida.",
+    "Até **[DATA]**, ele vem **de presente** na sua assinatura da TAG Curadoria, com o cupom **QUEROCHIMAMANDA100OFF**.",
+    "[BOTAO: Quero a Chimamanda de presente]",
+    "No kit do mês vem **A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents, que chega ao Brasil pela caixinha da TAG.",
+    "*P.S. Esta é a última oferta da campanha. Depois de [DATA], o kit extra sai da assinatura.*"
   ],
-  ctaText:"Garantir meus dois livros"
+  ctaText:"Assinar com QUEROCHIMAMANDA100OFF"
 },
 {
-  code:"AQ 06 IN", clube:"in", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"leads que nunca assinaram · Inéditos",
-  tag:"Retorno do segundo turno, última chamada com cupom de CRM · Assunto B: [nome], a melhor condição do ano na TAG Inéditos termina em [DATA]",
-  titulo:"Última chamada: cupom + dois livros + frete grátis",
-  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  code:"CU C1", base:"cancelados", oferta:"diario", date:"21/10 (qua)", sortDate:"2026-10-21", status:"pararevisao", segmento:"Cancelados recentes · Curadoria",
+  tag:"Primeiro contato com quem cancelou, com a 2ª oferta. Gancho D do mapa: um livro sobre exílio que surpreende pelo humor",
+  titulo:"Desde que você saiu, a Curadoria trouxe um livro que ainda não tinha chegado ao Brasil",
+  subtitulo:"A profecia de Dali, finalista do Prix des 5 continents. E tem um presente pra sua volta.",
+  assuntoB:"Um livro sobre exílio que a crítica francesa chamou de engraçado e otimista",
+  assuntoEx:"",
   corpo:[
-    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "[IMAGEM: capa de A profecia de Dali sobre a caixinha da Curadoria]",
     "Oi, [nome],",
-    "Esta é a **condição mais completa** que já enviamos para você, e ela termina em **[DATA]**.",
-    "[BOTAO: Usar meu cupom]",
-    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
-    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet",
-    "**Kit extra com As mulheres-leão de Teerã**, de Marjan Kamali",
-    "**Frete grátis o ano todo** no plano anual",
-    "Dois romances que você lê antes de chegarem às livrarias, com a condição mais completa da campanha.",
-    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+    "Faz pouco tempo que você deixou a Curadoria, e a caixinha de outubro trouxe **A profecia de Dali**, de Balla Fofana, que chega ao Brasil pela TAG.",
+    "Um menino chega do Mali à periferia de Paris sem falar francês, e a escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês, com uma voz que mistura a do menino e a do adulto.",
+    "[BOTAO: Quero voltar para a Curadoria]",
+    "*Quem espera um livro triste se surpreende: a crítica francesa fala em energia, humor e otimismo.*",
+    "[IMAGEM: diário de leitura]",
+    "**Pra sua volta:** com o cupom **QUERODIARIO**, a assinatura chega com um **diário de leitura** de presente.",
+    "*P.S. O cupom vale até [DATA].*"
   ],
-  ctaText:"Assinar com cupom"
+  ctaText:"Voltar com QUERODIARIO"
 },
 {
-  code:"AQ 06 CU", clube:"cu", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"leads que nunca assinaram · Curadoria",
-  tag:"Retorno do segundo turno, última chamada com cupom de CRM · Assunto B: [nome], a Chimamanda de presente termina em [DATA]",
-  titulo:"Última chamada: cupom + dois livros + frete grátis",
-  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
+  code:"CU C2", base:"cancelados", oferta:"kitcu", date:"27/10 (ter)", sortDate:"2026-10-27", status:"pararevisao", segmento:"Cancelados recentes · Curadoria",
+  tag:"Segundo contato com quem cancelou, com a última oferta. Gancho B + F do mapa: Chimamanda no assunto e os dois livros visíveis",
+  titulo:"Volte para a Curadoria e leve a Chimamanda de presente",
+  subtitulo:"A contagem dos sonhos sai por R$ 0 com QUEROCHIMAMANDA100OFF, só até [DATA].",
+  assuntoB:"[nome], o novo romance da Chimamanda está separado pra sua volta",
+  assuntoEx:"",
   corpo:[
-    "[IMAGEM: banner de última chamada com o cupom em destaque]",
+    "[IMAGEM: A contagem dos sonhos e A profecia de Dali sobre a caixinha]",
     "Oi, [nome],",
-    "Esta é a **condição mais completa** que já enviamos para você, e ela termina em **[DATA]**.",
-    "[BOTAO: Usar meu cupom]",
-    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
-    "**Kit extra com A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos",
-    "**A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents",
-    "**Frete grátis o ano todo** no plano anual",
-    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
+    "Esta é a melhor condição que vamos oferecer para a sua volta, e ela termina em **[DATA]**.",
+    "[BOTAO: Voltar com a Chimamanda]",
+    "**A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos, de presente com o cupom **QUEROCHIMAMANDA100OFF**.",
+    "**A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents, no kit de outubro.",
+    "*P.S. Depois de [DATA], o kit extra sai da oferta.*"
   ],
-  ctaText:"Assinar com cupom"
+  ctaText:"Voltar com QUEROCHIMAMANDA100OFF"
+},
+{
+  code:"CU UA", base:"anual", oferta:"diario", date:"22/10 (qui)", sortDate:"2026-10-22", status:"pararevisao", segmento:"Assinantes do plano mensal · Curadoria",
+  tag:"Upsell de plano para quem já recebe a Curadoria no mensal. Gancho F do mapa: livro do mês + frete grátis, o argumento que mais vendeu em Curadoria, com o diário como incentivo",
+  titulo:"[nome], sua Curadoria pode vir sem frete pelos próximos 12 meses",
+  subtitulo:"Passe para o plano anual e ganhe um diário de leitura de presente.",
+  assuntoB:"O livro do mês chega na sua casa, com frete grátis o ano todo",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: caixinha da Curadoria com selo “frete grátis o ano todo”]",
+    "Oi, [nome],",
+    "Você já recebe a Curadoria todo mês. Neste mês, com **A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents.",
+    "No **plano anual**, o livro do mês chega na sua casa com **frete grátis o ano todo**. Na prática, cerca de **[R$ X]** que ficam com você ao longo de 12 meses, sem mudar nada no que chega.",
+    "[BOTAO: Passar para o plano anual]",
+    "[IMAGEM: diário de leitura]",
+    "**E pra trocar agora:** com o cupom **QUERODIARIO**, a mudança para o anual vem com um **diário de leitura** de presente, pra registrar os 12 livros do ano.",
+    "*P.S. O cupom vale até [DATA].*"
+  ],
+  ctaText:"Mudar para o anual"
+},
+{
+  code:"CU UC", base:"combo", oferta:"combo", date:"28/10 (qua)", sortDate:"2026-10-28", status:"pararevisao", segmento:"Assinantes só da Curadoria · upsell para o combo",
+  tag:"Upsell para o combo de quem assina só a Curadoria: apresenta o Inéditos pelo livro do mês, com o selo “da autora de Hamnet” (gancho B) e a plataforma “lê primeiro”",
+  titulo:"Você já recebe a Curadoria. Que tal ler também antes de todo mundo?",
+  subtitulo:"O Retrato de Casamento, da autora de Hamnet, com o cupom QUEROCOMBO.",
+  assuntoB:"Se Hamnet te deixou sem chão, espere até conhecer Lucrezia",
+  assuntoEx:"",
+  corpo:[
+    "[IMAGEM: caixinha da Curadoria e do Inéditos lado a lado]",
+    "Oi, [nome],",
+    "Na Curadoria, você recebe livros indicados por curadores convidados. No **TAG Inéditos**, cada mês traz um romance que ainda não chegou às livrarias do Brasil. *Quem assina lê primeiro.*",
+    "O de outubro é **O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. Florença, século XVI: Lucrezia não escolheu o casamento, o marido nem o palácio, e o livro mostra o que ela pensava por trás do retrato.",
+    "[BOTAO: Quero os dois clubes]",
+    "**Com o cupom QUEROCOMBO**, você soma o Inéditos à sua assinatura com **[BENEFÍCIO DO QUEROCOMBO]**. Assim, todo mês chegam A profecia de Dali e O Retrato de Casamento, e depois os próximos dos dois clubes.",
+    "*P.S. O cupom QUEROCOMBO vale até [DATA].*"
+  ],
+  ctaText:"Assinar o combo"
 }
 ],
-reativacao: [
+whatsapp: [
 {
-  code:"REA 01 IN", clube:"in", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"ex assinantes · Inéditos",
-  tag:"Versão de volta do AQ 01, mesma oferta com abertura afetiva · Assunto B: A caixinha sentiu sua falta (e voltou com dois livros)",
-  titulo:"Para voltar, dois livros de uma vez (só até [DATA])",
-  subtitulo:"O Retrato de Casamento, da autora de Hamnet, com As mulheres-leão de Teerã no kit extra.",
+  code:"WA 01", base:"carrinho", oferta:"semcupom", date:"Automático, seg a qui, 1 hora após o abandono", sortDate:"2026-10-19", status:"pararevisao", segmento:"Carrinho abandonado · os dois clubes",
+  tag:"Primeiro toque, sem cupom: lembra o livro do clube escolhido",
+  titulo:"Mensagem 1 · lembrete com o livro do mês",
+  subtitulo:"Disparo único por pessoa, na versão do clube que ficou no carrinho.",
+  assuntoB:"", assuntoEx:"",
   corpo:[
-    "[IMAGEM: banner do clube com os dois kits lado a lado]",
-    "Oi, [nome],",
-    "*A caixinha sentiu sua falta.* Se voltar para a TAG Inéditos até **[DATA]**, ela chega com **dois livros**.",
-    "[BOTAO: Quero voltar com os dois kits]",
-    "**Kit do mês · O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet. Itália, século XVI: uma jovem duquesa, um casamento que ela não escolheu e um retrato que mostra o rosto, mas não o que ela pensava.",
-    "**Kit extra · As mulheres-leão de Teerã**, de Marjan Kamali. Duas amigas, uma promessa feita na infância e uma cidade que muda inteira ao redor delas.",
-    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
-    "*P.S. Depois de [DATA], o kit extra sai da oferta. Se a ideia era voltar, este é o mês.*"
+    "[IMAGEM: capa do livro do mês do clube que ficou no carrinho]",
+    "**Versão Inéditos**",
+    "Oi, [nome]! Sua assinatura da TAG Inéditos ficou pela metade. *O Retrato de Casamento*, da autora de Hamnet, já está separado pra você.",
+    "É só terminar por aqui: [LINK DO CARRINHO]",
+    "**Versão Curadoria**",
+    "Oi, [nome]! Sua assinatura da TAG Curadoria ficou pela metade. *A profecia de Dali*, finalista do Prix des 5 continents, chega ao Brasil pela caixinha e já está separada pra você.",
+    "É só terminar por aqui: [LINK DO CARRINHO]",
+    "**Fechamento das duas versões**",
+    "Se travou em alguma coisa, é só responder esta mensagem que a gente te ajuda."
   ],
-  ctaText:"Voltar para a TAG Inéditos"
+  ctaText:null
 },
 {
-  code:"REA 01 CU", clube:"cu", date:"09/10 (sex)", sortDate:"2026-10-09", status:"pararevisao", segmento:"ex assinantes · Curadoria",
-  tag:"Versão de volta do AQ 01, mesma oferta com abertura afetiva · Assunto B: A caixinha sentiu sua falta (e voltou com uma Chimamanda)",
-  titulo:"Para voltar, dois livros de uma vez (só até [DATA])",
-  subtitulo:"A profecia de Dali no kit do mês e A contagem dos sonhos no kit extra.",
+  code:"WA 02", base:"carrinho", oferta:"diario", date:"Automático, seg a qui, 24 horas após o abandono", sortDate:"2026-10-19", status:"pararevisao", segmento:"Carrinho abandonado · os dois clubes",
+  tag:"Segundo toque, com cupom, só para quem não concluiu depois da mensagem 1. A partir de 26/10, trocar pelo cupom de kit extra",
+  titulo:"Mensagem 2 · cupom para concluir hoje",
+  subtitulo:"Sai só para quem ainda não concluiu a assinatura.",
+  assuntoB:"", assuntoEx:"",
   corpo:[
-    "[IMAGEM: banner do clube com os dois kits lado a lado]",
-    "Oi, [nome],",
-    "*A caixinha sentiu sua falta.* Se voltar para a TAG Curadoria até **[DATA]**, ela chega com **dois livros**.",
-    "[BOTAO: Quero voltar com os dois kits]",
-    "**Kit extra · A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos.",
-    "**Kit do mês · A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie, que chega ao Brasil pela caixinha da TAG.",
-    "**No plano anual:** frete grátis o ano todo, em todas as caixinhas.",
-    "*P.S. Depois de [DATA], o kit extra sai da oferta. Se a ideia era voltar, este é o mês.*"
+    "**Versão Inéditos**",
+    "[nome], seu carrinho do Inéditos ainda está aqui. Use o cupom *QUERODIARIO* e conclua hoje: O Retrato de Casamento chega com um diário de leitura de presente.",
+    "[LINK DO CARRINHO]",
+    "**Versão Curadoria**",
+    "[nome], seu carrinho da Curadoria ainda está aqui. Use o cupom *QUERODIARIO* e conclua hoje: A profecia de Dali chega com um diário de leitura de presente.",
+    "[LINK DO CARRINHO]",
+    "**A partir de 26/10 (última oferta)**",
+    "Inéditos: troque o cupom por *[CUPOM INÉDITOS]* e o texto por “O Retrato de Casamento chega com As mulheres-leão de Teerã de presente”. Curadoria: troque por *QUEROCHIMAMANDA100OFF* e “A profecia de Dali chega com o novo romance da Chimamanda de presente”."
   ],
-  ctaText:"Voltar para a TAG Curadoria"
-},
-{
-  code:"REA 02 IN", clube:"in", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"ex assinantes · Inéditos",
-  tag:"Versão de volta do AQ 02, kit extra como motivo pra voltar · Assunto B: Quanto uma amizade aguenta quando o país inteiro muda?",
-  titulo:"Volte para a TAG e leve um livro a mais",
-  subtitulo:"As mulheres-leão de Teerã vêm de presente com O Retrato de Casamento.",
-  corpo:[
-    "[IMAGEM: capa de As mulheres-leão de Teerã em destaque]",
-    "Oi, [nome],",
-    "Você conhece a caixinha do Inéditos. Este mês, ela volta **com um livro a mais** para quem decidir retomar a assinatura.",
-    "Teerã, anos 1950. Duas meninas fazem uma promessa de amizade, e a cidade muda por completo ao redor delas. Esse é **As mulheres-leão de Teerã**, de Marjan Kamali, o kit extra deste mês.",
-    "[BOTAO: Quero voltar com o kit extra]",
-    "Junto com ele, chega **O Retrato de Casamento**, o novo romance de Maggie O’Farrell, a autora de Hamnet. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
-  ],
-  ctaText:"Retomar minha assinatura"
-},
-{
-  code:"REA 02 CU", clube:"cu", date:"13/10 (ter)", sortDate:"2026-10-13", status:"pararevisao", segmento:"ex assinantes · Curadoria",
-  tag:"Versão de volta do AQ 02, Chimamanda como motivo pra voltar · Assunto B: O novo romance da Chimamanda pode ser seu de presente",
-  titulo:"Volte para a TAG e leve a Chimamanda junto",
-  subtitulo:"A contagem dos sonhos vem no kit extra da TAG Curadoria.",
-  corpo:[
-    "[IMAGEM: capa de A contagem dos sonhos em destaque]",
-    "Oi, [nome],",
-    "Foram mais de dez anos de espera por um novo romance de **Chimamanda Ngozi Adichie**. Para quem voltar para a TAG Curadoria agora, ele chega **como kit extra**.",
-    "[BOTAO: Quero voltar com a Chimamanda]",
-    "No kit do mês, **A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents, em edição exclusiva da caixinha. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. O kit extra acompanha as assinaturas feitas até [DATA].*"
-  ],
-  ctaText:"Retomar minha assinatura"
-},
-{
-  code:"REA 03 IN", clube:"in", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"ex assinantes · Inéditos",
-  tag:"Versão de volta do AQ 03, a conta do plano anual · Assunto B: A conta da sua volta para a TAG Inéditos",
-  titulo:"Volte com dois livros e um ano de frete grátis",
-  subtitulo:"O Retrato de Casamento + As mulheres-leão de Teerã, e frete grátis em todas as caixinhas.",
-  corpo:[
-    "[IMAGEM: banner com a conta do plano anual em três linhas]",
-    "Oi, [nome],",
-    "Se você pensava em voltar, fizemos a conta do plano anual da TAG Inéditos:",
-    "**2 livros logo na primeira entrega:** O Retrato de Casamento e As mulheres-leão de Teerã.",
-    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
-    "**12 romances** que você lê antes de chegarem às livrarias do Brasil.",
-    "[BOTAO: Voltar no plano anual]",
-    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
-  ],
-  ctaText:"Voltar no plano anual"
-},
-{
-  code:"REA 03 CU", clube:"cu", date:"15/10 (qui)", sortDate:"2026-10-15", status:"pararevisao", segmento:"ex assinantes · Curadoria",
-  tag:"Versão de volta do AQ 03, a conta do plano anual · Assunto B: A conta da sua volta para a TAG Curadoria",
-  titulo:"Volte com dois livros e um ano de frete grátis",
-  subtitulo:"A profecia de Dali + A contagem dos sonhos, e frete grátis em todas as caixinhas.",
-  corpo:[
-    "[IMAGEM: banner com a conta do plano anual em três linhas]",
-    "Oi, [nome],",
-    "Se você pensava em voltar, fizemos a conta do plano anual da TAG Curadoria:",
-    "**2 livros logo na primeira entrega:** A profecia de Dali e A contagem dos sonhos.",
-    "**12 caixinhas com frete grátis:** cerca de [R$ X] que ficam com você ao longo do ano.",
-    "**12 livros indicados por curadores convidados**, em edições exclusivas.",
-    "[BOTAO: Voltar no plano anual]",
-    "*P.S. O kit extra vale até [DATA]. O frete grátis vale o ano inteiro para quem assinar o anual.*"
-  ],
-  ctaText:"Voltar no plano anual"
-},
-{
-  code:"REA 04 IN", clube:"in", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"ex assinantes · Inéditos",
-  tag:"Versão de volta do AQ 04, o que a pessoa perdeu desde que saiu · Assunto B: Os próximos livros do ano podem chegar aí antes",
-  titulo:"Desde que você saiu, estes livros passaram pela caixinha",
-  subtitulo:"E o próximo é O Retrato de Casamento, da autora de Hamnet.",
-  corpo:[
-    "[IMAGEM: fileira de capas enviadas desde a saída da pessoa]",
-    "Oi, [nome],",
-    "Desde que você saiu, [TÍTULO 1], [TÍTULO 2] e As mulheres-leão de Teerã passaram pela caixinha da TAG Inéditos, **antes de virar conversa**.",
-    "O próximo é **O Retrato de Casamento**, de Maggie O’Farrell. *O retrato mostrava o rosto de Lucrezia. O livro mostra o que ela pensava.*",
-    "[BOTAO: Quero voltar a ler primeiro]",
-    "Voltando agora, ele chega com o **kit extra de As mulheres-leão de Teerã**. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. Quem volta agora recebe também o kit extra, até [DATA].*"
-  ],
-  ctaText:"Voltar para a TAG Inéditos"
-},
-{
-  code:"REA 04 CU", clube:"cu", date:"20/10 (ter)", sortDate:"2026-10-20", status:"pararevisao", segmento:"ex assinantes · Curadoria",
-  tag:"Versão de volta do AQ 04, pergunta sobre o tema · Assunto B: Os próximos livros do ano podem chegar aí antes",
-  titulo:"O que acontece quando a escola decide que você não vai aprender?",
-  subtitulo:"A profecia de Dali chega ao Brasil pela caixinha, com a Chimamanda de presente.",
-  corpo:[
-    "[IMAGEM: capa de A profecia de Dali em destaque]",
-    "Oi, [nome],",
-    "Um menino chega do Mali à periferia de Paris sem falar francês. A escola decide, antes de ouvi-lo, que ele não vai aprender. Anos depois, ele escreve este livro em francês.",
-    "**A profecia de Dali** chega ao Brasil pela caixinha da TAG Curadoria, e é um bom motivo para você voltar.",
-    "[BOTAO: Quero voltar a ler primeiro]",
-    "Voltando agora, ele vem com o **kit extra de A contagem dos sonhos**, de Chimamanda Ngozi Adichie. No plano anual, o frete é grátis o ano todo.",
-    "*P.S. Quem volta agora recebe também o kit extra, até [DATA].*"
-  ],
-  ctaText:"Voltar para a TAG Curadoria"
-},
-{
-  code:"REA 05 IN", clube:"in", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"ex assinantes · Inéditos",
-  tag:"Versão de volta do AQ 06, última chamada com cupom de CRM · Assunto B: [nome], sua volta com a melhor condição do ano termina em [DATA]",
-  titulo:"Sua volta com a melhor condição do ano",
-  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
-  corpo:[
-    "[IMAGEM: banner de última chamada com o cupom em destaque]",
-    "Oi, [nome],",
-    "Esta é a **condição mais completa** que já enviamos para você voltar, e ela termina em **[DATA]**.",
-    "[BOTAO: Usar meu cupom]",
-    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
-    "**O Retrato de Casamento**, de Maggie O’Farrell, a autora de Hamnet",
-    "**Kit extra com As mulheres-leão de Teerã**, de Marjan Kamali",
-    "**Frete grátis o ano todo** no plano anual",
-    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
-  ],
-  ctaText:"Voltar com cupom"
-},
-{
-  code:"REA 05 CU", clube:"cu", date:"26/10 (seg)", sortDate:"2026-10-26", status:"pararevisao", segmento:"ex assinantes · Curadoria",
-  tag:"Versão de volta do AQ 06, última chamada com cupom de CRM · Assunto B: [nome], a Chimamanda de presente termina em [DATA]",
-  titulo:"Sua volta com a melhor condição do ano",
-  subtitulo:"Cupom [CUPOM CRM], kit extra e frete grátis o ano todo no plano anual.",
-  corpo:[
-    "[IMAGEM: banner de última chamada com o cupom em destaque]",
-    "Oi, [nome],",
-    "Esta é a **condição mais completa** que já enviamos para você voltar, e ela termina em **[DATA]**.",
-    "[BOTAO: Usar meu cupom]",
-    "**[BENEFÍCIO DO CUPOM CRM]** com o cupom [CUPOM CRM]",
-    "**Kit extra com A contagem dos sonhos**, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos",
-    "**A profecia de Dali**, de Balla Fofana, finalista do Prix des 5 continents",
-    "**Frete grátis o ano todo** no plano anual",
-    "*P.S. Depois de [DATA], o cupom expira e o kit extra sai da assinatura.*"
-  ],
-  ctaText:"Voltar com cupom"
-}
-],
-carrinho: [
-{
-  code:"CA 01 IN (trigger)", clube:"in", date:"Automático, seg a qui durante a campanha", sortDate:"2026-10-08", status:"pararevisao", segmento:"carrinho abandonado · Inéditos",
-  tag:"Recuperação de carrinho, texto curto e botão no topo · Assunto B: Faltou um clique para O Retrato de Casamento chegar aí",
-  titulo:"Seu carrinho agora vem com um livro a mais",
-  subtitulo:"Conclua a assinatura e leve também As mulheres-leão de Teerã.",
-  corpo:[
-    "[IMAGEM: banner do clube]",
-    "Oi, [nome],",
-    "Seu carrinho da TAG Inéditos continua aqui. E, se você concluir agora, ele vem com **um livro a mais**.",
-    "[BOTAO: Concluir com kit extra]",
-    "**O que chega na sua casa:** O Retrato de Casamento, de Maggie O’Farrell, a autora de Hamnet; o kit extra com As mulheres-leão de Teerã, de Marjan Kamali; e frete grátis o ano todo, se você escolher o plano anual.",
-    "Os livros do Inéditos chegam ao Brasil pela TAG. *Fora da caixinha, você ainda não encontra.*",
-    "Use o cupom **[CUPOM]** no checkout.",
-    "*P.S. O kit extra vale só até [DATA]. Depois, a assinatura volta a ter um livro só.*"
-  ],
-  ctaText:"Garantir meus dois livros"
-},
-{
-  code:"CA 01 CU (trigger)", clube:"cu", date:"Automático, seg a qui durante a campanha", sortDate:"2026-10-08", status:"pararevisao", segmento:"carrinho abandonado · Curadoria",
-  tag:"Recuperação de carrinho, texto curto e botão no topo · Assunto B: Faltou um clique para A profecia de Dali chegar aí",
-  titulo:"Seu carrinho agora vem com uma Chimamanda de presente",
-  subtitulo:"Conclua a assinatura e leve também A contagem dos sonhos.",
-  corpo:[
-    "[IMAGEM: banner do clube]",
-    "Oi, [nome],",
-    "Seu carrinho da TAG Curadoria continua aqui. E, se você concluir agora, ele vem com **um livro a mais**.",
-    "[BOTAO: Concluir com kit extra]",
-    "**O que chega na sua casa:** A profecia de Dali, de Balla Fofana, finalista do Prix des 5 continents de la Francophonie; o kit extra com A contagem dos sonhos, o primeiro romance de Chimamanda Ngozi Adichie em mais de dez anos; e frete grátis o ano todo, se você escolher o plano anual.",
-    "A profecia de Dali chega ao Brasil pela caixinha da TAG, *em edição exclusiva*.",
-    "Use o cupom **[CUPOM]** no checkout.",
-    "*P.S. O kit extra vale só até [DATA]. Depois, a assinatura volta a ter um livro só.*"
-  ],
-  ctaText:"Garantir meus dois livros"
-}
-],
-onboarding: [
-{
-  code:"ONB 01 IN (trigger)", clube:"in", date:"Automático, logo após a assinatura", sortDate:"2026-10-30", status:"pararevisao", segmento:"novos assinantes · Inéditos",
-  tag:"Boas vindas, confirma os dois kits e o que vem a seguir · Assunto B: Seus dois livros já estão a caminho",
-  titulo:"Bem vindo à TAG Inéditos",
-  subtitulo:"O Retrato de Casamento e As mulheres-leão de Teerã já estão separados pra você.",
-  corpo:[
-    "[IMAGEM: banner de boas vindas do clube]",
-    "Oi, [nome],",
-    "Que bom ter você com a gente. A partir de agora, **todo mês chega na sua casa um romance que ainda não está nas livrarias do Brasil**.",
-    "**Sua primeira entrega vem dupla:** O Retrato de Casamento, de Maggie O’Farrell, e o kit extra com As mulheres-leão de Teerã, de Marjan Kamali. [PRAZO DE ENVIO]",
-    "[IMAGEM: foto da caixinha aberta com os dois livros]",
-    "Enquanto a caixinha não chega, baixe o **app da TAG**: lá você acompanha o envio, troca impressões com outros associados e encontra o conteúdo de cada livro.",
-    "*Se assinou no plano anual, o frete das próximas caixinhas já está por nossa conta.*"
-  ],
-  ctaText:"Baixar o app da TAG"
-},
-{
-  code:"ONB 01 CU (trigger)", clube:"cu", date:"Automático, logo após a assinatura", sortDate:"2026-10-30", status:"pararevisao", segmento:"novos assinantes · Curadoria",
-  tag:"Boas vindas, confirma os dois kits e o que vem a seguir · Assunto B: Seus dois livros já estão a caminho",
-  titulo:"Bem vindo à TAG Curadoria",
-  subtitulo:"A profecia de Dali e A contagem dos sonhos já estão separados pra você.",
-  corpo:[
-    "[IMAGEM: banner de boas vindas do clube]",
-    "Oi, [nome],",
-    "Que bom ter você com a gente. A partir de agora, **todo mês chega na sua casa um livro indicado por um curador convidado**, em edição exclusiva.",
-    "**Sua primeira entrega vem dupla:** A profecia de Dali, de Balla Fofana, e o kit extra com A contagem dos sonhos, de Chimamanda Ngozi Adichie. [PRAZO DE ENVIO]",
-    "[IMAGEM: foto da caixinha aberta com os dois livros]",
-    "Enquanto a caixinha não chega, baixe o **app da TAG**: lá você acompanha o envio, troca impressões com outros associados e encontra o conteúdo de cada livro.",
-    "*Se assinou no plano anual, o frete das próximas caixinhas já está por nossa conta.*"
-  ],
-  ctaText:"Baixar o app da TAG"
-},
-{
-  code:"ONB 02 (trigger)", clube:"", date:"Automático, 7 dias após a assinatura", sortDate:"2026-11-06", status:"pararevisao", segmento:"novos assinantes · os dois clubes",
-  tag:"Como funciona a assinatura, reduz dúvidas e cancelamento precoce · Assunto B: Tudo o que você precisa saber sobre a sua caixinha",
-  titulo:"Como funciona a sua assinatura da TAG",
-  subtitulo:"Envio, área do associado e o que fazer se precisar de ajuda.",
-  corpo:[
-    "[IMAGEM: banner do clube]",
-    "Oi, [nome],",
-    "Pra sua primeira semana de TAG [Inéditos/Curadoria] ser tranquila, juntamos aqui o que mais perguntam pra gente:",
-    "**Quando chega:** as caixinhas saem [DIA DE ENVIO] de cada mês, e você recebe o código de rastreio por e-mail.",
-    "**Onde acompanho:** na área do associado e no app, com status da assinatura, dados de entrega e de pagamento.",
-    "**O que vem na caixinha:** o livro do mês, a revista e os mimos do mês. [CONFIRMAR ITENS]",
-    "[IMAGEM: print da área do associado]",
-    "*Se tiver qualquer dúvida, é só responder este e-mail que a gente te ajuda.*"
-  ],
-  ctaText:"Acessar a área do associado"
+  ctaText:null
 }
 ]
 };
 
-const LABELS = {aquisicao:"AQ", reativacao:"REA", carrinho:"CA", onboarding:"ONB"};
+const LABELS = {ineditos:"INÉDITOS", curadoria:"CURADORIA", whatsapp:"WHATSAPP"};
+const CODE_PREFIX = {ineditos:"IN", curadoria:"CU", whatsapp:"WA"};
 const STATUS_LABELS = {
   pronto:"pronto",
   emajuste:"em ajuste",
@@ -1314,6 +1218,10 @@ function renderCorpo(corpoArr){
     if(p.indexOf("[IMAGEM") === 0){
       const label = p.replace(/^\[IMAGEM:?\s*/,"").replace(/\]$/,"");
       return `<div class="img-tag">${label}</div>`;
+    }
+    if(p.indexOf("[EX:") === 0){
+      const t = p.replace(/^\[EX:\s*/,"").replace(/\]$/,"").replace(/^Abertura para ex assinantes:\s*/,"");
+      return `<div class="ex-note"><b>Abertura para ex assinantes</b>${parseMd(t)}</div>`;
     }
     if(p.indexOf("[BOTAO") === 0){
       const label = p.replace(/^\[BOTAO:?\s*/,"").replace(/\]$/,"");
@@ -1367,12 +1275,22 @@ async function fetchComments(){
   return map;
 }
 
+function badgesHtml(item){
+  const b = BASES[item.base];
+  const o = OFERTAS[item.oferta];
+  if(!b && !o) return "";
+  return `<div class="badges">${b ? `<span class="base-tag" data-b="${item.base}">Base · ${b.nome}</span>` : ""}${o ? `<span class="cupom-tag">${o.nivel} · ${o.nome}</span>` : ""}</div>`;
+}
+
+let BASE_FILTER = "all";
+
 function buildPass(item, regua, commentsForCode){
   const el = document.createElement("div");
   el.className = "pass";
   el.setAttribute("data-r", regua);
   el.setAttribute("data-code", item.code);
   const cl = clubeDe(item.code);
+  const isWa = item.code.indexOf("WA") === 0;
   const clubeTag = cl ? `<span class="clube-tag ${cl}">${CLUBE_NOME[cl]}</span>` : "";
 
   const thread = (commentsForCode || []).map(c => `
@@ -1381,11 +1299,19 @@ function buildPass(item, regua, commentsForCode){
 
   const detailInner = `
     <div class="field">
-      <div class="field-label">Título (assunto A)</div>
+      <div class="field-label">${isWa ? "Mensagem" : "Assunto A"}</div>
       <div class="field-value" data-role="view-titulo">${item.titulo}</div>
     </div>
+    <div class="field" data-role="box-b" style="${item.assuntoB ? "" : "display:none"}">
+      <div class="field-label">Assunto B (teste A/B)</div>
+      <div class="field-value" data-role="view-b">${item.assuntoB || ""}</div>
+    </div>
+    <div class="field" data-role="box-ex" style="${item.assuntoEx ? "" : "display:none"}">
+      <div class="field-label">Assunto para ex assinantes</div>
+      <div class="field-value" data-role="view-ex">${item.assuntoEx || ""}</div>
+    </div>
     <div class="field">
-      <div class="field-label">Subtítulo (preheader)</div>
+      <div class="field-label">${isWa ? "Quando sai" : "Preheader"}</div>
       <div class="field-value sub" data-role="view-subtitulo">${item.subtitulo}</div>
     </div>
     <div class="field">
@@ -1399,7 +1325,7 @@ function buildPass(item, regua, commentsForCode){
       <button class="order-btn" type="button" data-action="move-up" title="Mover pra cima">▲</button>
       <button class="order-btn" type="button" data-action="move-down" title="Mover pra baixo">▼</button>
       <button class="edit-btn" type="button" data-action="toggle-edit">Editar texto</button>
-      <button class="copy-btn" type="button" data-action="copy">Copiar título, subtítulo e corpo</button>
+      <button class="copy-btn" type="button" data-action="copy">Copiar texto completo</button>
       <button class="delete-btn" type="button" data-action="delete">Excluir e-mail</button>
     </div>
 
@@ -1414,16 +1340,24 @@ function buildPass(item, regua, commentsForCode){
         <input class="edit-input" data-role="edit-sortdate" value="${(item.sortDate || "").replace(/"/g,"&quot;")}">
       </div>
       <div class="edit-field">
-        <label>Título (assunto A)</label>
+        <label>${isWa ? "Mensagem" : "Assunto A"}</label>
         <input class="edit-input" data-role="edit-titulo" value="${item.titulo.replace(/"/g,"&quot;")}">
       </div>
       <div class="edit-field">
-        <label>Subtítulo (preheader)</label>
+        <label>Assunto B (teste A/B)</label>
+        <input class="edit-input" data-role="edit-b" value="${(item.assuntoB || "").replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>Assunto para ex assinantes</label>
+        <input class="edit-input" data-role="edit-ex" value="${(item.assuntoEx || "").replace(/"/g,"&quot;")}">
+      </div>
+      <div class="edit-field">
+        <label>${isWa ? "Quando sai" : "Preheader"}</label>
         <input class="edit-input" data-role="edit-subtitulo" value="${item.subtitulo.replace(/"/g,"&quot;")}">
       </div>
       <div class="edit-field">
         <label>Corpo (um parágrafo por bloco, separado por linha em branco)</label>
-        <div class="edit-hint">Use **texto** pra negrito, *texto* pra itálico, uma linha assim [IMAGEM: descrição] onde entra uma imagem e [BOTAO: texto] pra um botão no meio do e-mail.</div>
+        <div class="edit-hint">Use **texto** pra negrito, *texto* pra itálico, uma linha assim [IMAGEM: descrição] onde entra uma imagem, [BOTAO: texto] pra um botão no meio do e-mail e [EX: texto] pra abertura de ex assinantes.</div>
         <textarea class="edit-textarea" data-role="edit-corpo">${corpoToTextarea(item.corpo)}</textarea>
       </div>
       <div class="edit-field">
@@ -1449,6 +1383,7 @@ function buildPass(item, regua, commentsForCode){
         <div class="pass-main">
           <div class="pass-code">${item.code}${clubeTag}</div>
           <div class="segmento">${item.segmento}</div>
+          ${badgesHtml(item)}
           <div class="pass-title" data-role="head-titulo">${item.titulo}</div>
           <div class="pass-tag">${item.tag}</div>
         </div>
@@ -1499,6 +1434,7 @@ function buildPass(item, regua, commentsForCode){
     await sb.from(T_EMAILS).upsert({
       code:it.code, regua, segmento:it.segmento, data_disparo:it.date, sort_date:it.sortDate || null,
       tag:it.tag, titulo:it.titulo, subtitulo:it.subtitulo, corpo:it.corpo, cta:it.ctaText || null,
+      assunto_b:it.assuntoB || null, assunto_ex:it.assuntoEx || null,
       posicao:it.posicao, atualizado_em:new Date().toISOString()
     });
     it.synced = true;
@@ -1561,13 +1497,16 @@ function buildPass(item, regua, commentsForCode){
     const novoSubtitulo = el.querySelector('[data-role="edit-subtitulo"]').value.trim();
     const novoCorpo = textareaToCorpo(el.querySelector('[data-role="edit-corpo"]').value);
     const novoCta = el.querySelector('[data-role="edit-cta"]').value.trim();
+    const novoB = el.querySelector('[data-role="edit-b"]').value.trim();
+    const novoEx = el.querySelector('[data-role="edit-ex"]').value.trim();
 
     saveBtn.textContent = "Salvando...";
     const { error } = await sb.from(T_EMAILS).upsert({
       code:item.code, regua, segmento:item.segmento, data_disparo:novaData || item.date,
       sort_date: novoSortDate || item.sortDate || null,
       tag:item.tag, titulo:novoTitulo, subtitulo:novoSubtitulo, corpo:novoCorpo,
-      cta: novoCta || null, posicao:item.posicao, atualizado_em: new Date().toISOString()
+      cta: novoCta || null, assunto_b: novoB || null, assunto_ex: novoEx || null,
+      posicao:item.posicao, atualizado_em: new Date().toISOString()
     });
 
     if(!error){
@@ -1577,7 +1516,12 @@ function buildPass(item, regua, commentsForCode){
       item.subtitulo = novoSubtitulo;
       item.corpo = novoCorpo;
       item.ctaText = novoCta || null;
+      item.assuntoB = novoB; item.assuntoEx = novoEx;
       item.synced = true;
+      el.querySelector('[data-role="view-b"]').textContent = novoB;
+      el.querySelector('[data-role="box-b"]').style.display = novoB ? "" : "none";
+      el.querySelector('[data-role="view-ex"]').textContent = novoEx;
+      el.querySelector('[data-role="box-ex"]').style.display = novoEx ? "" : "none";
       el.querySelector('[data-role="view-date"]').textContent = item.date;
       el.querySelector('[data-role="view-titulo"]').textContent = novoTitulo;
       el.querySelector('[data-role="view-subtitulo"]').textContent = novoSubtitulo;
@@ -1623,14 +1567,15 @@ function buildPass(item, regua, commentsForCode){
     e.stopPropagation();
     const plainCorpo = item.corpo
       .filter(p => p.indexOf("[IMAGEM") !== 0)
+      .map(p => p.indexOf("[EX:") === 0 ? "ABERTURA EX ASSINANTES: " + p.replace(/^\[EX:\s*/,"").replace(/\]$/,"").replace(/^Abertura para ex assinantes:\s*/,"") : p)
       .map(p => p.indexOf("[BOTAO") === 0 ? "BOTÃO: " + p.replace(/^\[BOTAO:?\s*/,"").replace(/\]$/,"") : p)
       .map(p => p.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*(.+?)\*/g, "$1"));
-    const text = `Título: ${item.titulo}\nSubtítulo: ${item.subtitulo}\n\n${plainCorpo.join("\n\n")}${item.ctaText ? "\n\nCTA: " + item.ctaText : ""}`;
+    const text = (item.code.indexOf("WA") === 0 ? "" : `Assunto A: ${item.titulo}\n${item.assuntoB ? "Assunto B: " + item.assuntoB + "\n" : ""}${item.assuntoEx ? "Assunto ex assinantes: " + item.assuntoEx + "\n" : ""}Preheader: ${item.subtitulo}\n\n`) + `${plainCorpo.join("\n\n")}${item.ctaText ? "\n\nCTA: " + item.ctaText : ""}`;
     navigator.clipboard.writeText(text).then(() => {
       copyBtn.textContent = "Copiado";
       copyBtn.classList.add("done");
       setTimeout(() => {
-        copyBtn.textContent = "Copiar título, subtítulo e corpo";
+        copyBtn.textContent = "Copiar texto completo";
         copyBtn.classList.remove("done");
       }, 1800);
     });
@@ -1660,7 +1605,7 @@ async function initApp(){
       DATA[ov.regua].push({
         code:ov.code, date:ov.data_disparo || "A definir", sortDate:ov.sort_date || "", status:"pararevisao",
         segmento:ov.segmento || "a definir", tag:ov.tag || "", titulo:ov.titulo || "", subtitulo:ov.subtitulo || "",
-        corpo:ov.corpo || [], ctaText:ov.cta, fromDb:true
+        corpo:ov.corpo || [], ctaText:ov.cta, assuntoB:ov.assunto_b || "", assuntoEx:ov.assunto_ex || "", base:"", oferta:"", fromDb:true
       });
     }
   });
@@ -1675,6 +1620,8 @@ async function initApp(){
         if(ov.subtitulo) item.subtitulo = ov.subtitulo;
         if(ov.corpo) item.corpo = ov.corpo;
         item.ctaText = ov.cta;
+        if(ov.assunto_b !== undefined && ov.assunto_b !== null) item.assuntoB = ov.assunto_b;
+        if(ov.assunto_ex !== undefined && ov.assunto_ex !== null) item.assuntoEx = ov.assunto_ex;
         if(ov.data_disparo) item.date = ov.data_disparo;
         if(ov.sort_date) item.sortDate = ov.sort_date;
         if(ov.posicao !== undefined && ov.posicao !== null) item.posicao = ov.posicao;
@@ -1703,9 +1650,13 @@ async function initApp(){
 function renderBoard(regua){
   const board = document.getElementById("board-" + regua);
   board.innerHTML = "";
+  let shown = 0;
   DATA[regua].forEach(item => {
+    if(BASE_FILTER !== "all" && item.base !== BASE_FILTER) return;
     board.appendChild(buildPass(item, regua, GLOBAL_COMMENTS[item.code]));
+    shown++;
   });
+  if(!shown) board.innerHTML = `<div class="board-empty">Nenhum e-mail desta base nesta aba.</div>`;
   updateTabCount(regua);
 }
 
@@ -1718,10 +1669,10 @@ async function addNewEmail(regua){
   const existingCodes = new Set();
   Object.values(DATA).flat().forEach(i => existingCodes.add(i.code));
   let n = DATA[regua].length + 1;
-  let code = `${LABELS[regua]} ${String(n).padStart(2,"0")}`;
+  let code = `${CODE_PREFIX[regua]} ${String(n).padStart(2,"0")}`;
   while(existingCodes.has(code)){
     n++;
-    code = `${LABELS[regua]} ${String(n).padStart(2,"0")}`;
+    code = `${CODE_PREFIX[regua]} ${String(n).padStart(2,"0")}`;
   }
   const maxPos = DATA[regua].reduce((m,i) => Math.max(m, i.posicao || 0), 0);
   const today = new Date().toISOString().slice(0,10);
@@ -1762,7 +1713,7 @@ async function addNewEmail(regua){
 
 document.getElementById("add-email-btn").addEventListener("click", () => {
   const activeTab = document.querySelector(".tab.active");
-  const regua = activeTab ? activeTab.dataset.r : "aquisicao";
+  const regua = activeTab ? activeTab.dataset.r : "ineditos";
   addNewEmail(regua);
 });
 
@@ -1780,7 +1731,7 @@ function buildTimeline(){
     chip.className = "tchip";
     chip.setAttribute("data-r", regua);
     chip.innerHTML = `
-      <div class="tc-date">${item.sortDate ? item.sortDate.slice(5).split("-").reverse().join("/") : item.date}</div>
+      <div class="tc-date">${/^Autom/.test(item.date) ? "automático" : (item.sortDate ? item.sortDate.slice(5).split("-").reverse().join("/") : item.date)}</div>
       <div class="tc-code">${item.code}</div>
       <div class="tc-title">${item.titulo}</div>
     `;
@@ -1799,6 +1750,64 @@ function buildTimeline(){
     timelineEl.appendChild(chip);
   });
 }
+
+document.querySelectorAll(".bchip").forEach(ch => {
+  ch.addEventListener("click", () => {
+    BASE_FILTER = ch.dataset.b;
+    document.querySelectorAll(".bchip").forEach(c => c.setAttribute("aria-pressed", c === ch ? "true" : "false"));
+    Object.keys(DATA).forEach(renderBoard);
+  });
+});
+
+function escHtml(t){ return String(t == null ? "" : t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function corpoToDoc(corpo){
+  return corpo.map(p => {
+    if(p.indexOf("[IMAGEM") === 0) return `<p style="color:#777;font-family:Courier New;font-size:10pt">[IMAGEM] ${escHtml(p.replace(/^\[IMAGEM:?\s*/,"").replace(/\]$/,""))}</p>`;
+    if(p.indexOf("[BOTAO") === 0) return `<p style="font-family:Courier New;font-size:10pt"><b>[BOTÃO] ${escHtml(p.replace(/^\[BOTAO:?\s*/,"").replace(/\]$/,""))}</b></p>`;
+    if(p.indexOf("[EX:") === 0) return `<p style="color:#7a4e0a"><b>Abertura para ex assinantes:</b> ${escHtml(p.replace(/^\[EX:\s*/,"").replace(/\]$/,"").replace(/^Abertura para ex assinantes:\s*/,""))}</p>`;
+    return `<p>${parseMd(escHtml(p))}</p>`;
+  }).join("");
+}
+
+function exportDoc(){
+  const nomes = {ineditos:"TAG Inéditos · O Retrato de Casamento", curadoria:"TAG Curadoria · A profecia de Dali", whatsapp:"WhatsApp · carrinho abandonado"};
+  const ordemBase = ["leads","cancelados","anual","combo","carrinho",""];
+  let html = `<html><head><meta charset="utf-8"><title>Régua de CRM · Clubes TAG · Outubro 2026</title></head><body style="font-family:Arial;font-size:11pt">`;
+  html += `<h1>Régua de CRM · Clubes TAG · Outubro 2026</h1>`;
+  html += `<p>Hierarquia de ofertas: 1ª frete grátis (já usada em 12/10) · 2ª diário de leitura (QUERODIARIO) · 3ª kit extra (QUEROCHIMAMANDA100OFF na Curadoria; [CUPOM INÉDITOS] no Inéditos) · upsell combo (QUEROCOMBO).</p>`;
+  html += `<p>Exportado em ${new Date().toLocaleString("pt-BR")}.</p>`;
+  Object.keys(DATA).forEach(regua => {
+    html += `<h1>${escHtml(nomes[regua] || regua)}</h1>`;
+    const itens = DATA[regua].slice().sort((a,b) => (ordemBase.indexOf(a.base||"") - ordemBase.indexOf(b.base||"")) || (a.sortDate||"").localeCompare(b.sortDate||""));
+    itens.forEach(item => {
+      const b = BASES[item.base], o = OFERTAS[item.oferta];
+      html += `<h2>${escHtml(item.code)} · ${escHtml(item.date)}</h2>`;
+      html += `<p><b>Base:</b> ${escHtml(b ? b.nome + " (" + b.desc + ")" : item.segmento)}<br><b>Oferta:</b> ${escHtml(o ? o.nivel + " · " + o.nome : "")}<br><b>Status:</b> ${escHtml(STATUS_LABELS[item.status] || item.status)}<br><b>Estratégia:</b> ${escHtml(item.tag)}</p>`;
+      const isWa = item.code.indexOf("WA") === 0;
+      html += `<p><b>${isWa ? "Mensagem" : "Assunto A"}:</b> ${escHtml(item.titulo)}`;
+      if(item.assuntoB) html += `<br><b>Assunto B:</b> ${escHtml(item.assuntoB)}`;
+      if(item.assuntoEx) html += `<br><b>Assunto ex assinantes:</b> ${escHtml(item.assuntoEx)}`;
+      html += `<br><b>${isWa ? "Quando sai" : "Preheader"}:</b> ${escHtml(item.subtitulo)}</p>`;
+      html += corpoToDoc(item.corpo);
+      if(item.ctaText) html += `<p><b>CTA final:</b> ${escHtml(item.ctaText)}</p>`;
+      const cs = GLOBAL_COMMENTS[item.code] || [];
+      if(cs.length){ html += `<p><b>Comentários:</b></p>` + cs.map(c => `<p style="color:#555">· ${escHtml(fmtTs(c.criado_em))}: ${escHtml(c.comentario)}</p>`).join(""); }
+      html += `<hr>`;
+    });
+  });
+  html += `</body></html>`;
+  const blob = new Blob(["\ufeff", html], {type:"application/msword"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Regua CRM Clubes TAG outubro 2026.doc";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  const btn = document.getElementById("export-btn");
+  btn.textContent = "Arquivo baixado · suba no Drive"; btn.classList.add("done");
+  setTimeout(() => { btn.textContent = "Exportar todos para o Drive"; btn.classList.remove("done"); }, 3500);
+}
+document.getElementById("export-btn").addEventListener("click", exportDoc);
 </script>
 </body>
 </html>
